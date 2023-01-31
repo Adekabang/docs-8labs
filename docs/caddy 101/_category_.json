@@ -1,0 +1,9 @@
+{
+    "label": "Tutorial - Caddy",
+    "position": 2,
+    "link": {
+      "type": "generated-index",
+      "description": "Learn How to use, configure and deploy Caddy as a Web Server."
+    }
+  }
+  
