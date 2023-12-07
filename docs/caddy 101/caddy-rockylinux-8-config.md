@@ -43,6 +43,30 @@ ksara.xyz {
 }
 ```
 
+### Advanced Config for Reverse Proxy - Wildcard with Cloudflare Proxy
+The Advanced configuration to add X-Forwarded, Log Output and other else with Cloudflare Proxy full-strict. You can put your Cloudflare certificate (CA). You can create the CA on Your Domain > SSL/TLS > Origin Server. Also, X-Forwareded-For from Real IP that request to Cloudflare.
+
+```bash title="/etc/caddy/Caddyfile"
+*.ksara.xyz {
+	tls /etc/ssl/certs/cf-cert.pem /etc/ssl/certs/cf-priv.key
+	reverse_proxy https://localhost:3000 {
+		transport http {
+			tls
+			tls_insecure_skip_verify
+		}
+		header_up X-Forwarded-Proto https
+		header_up X-Url-Scheme {scheme}
+		header_up X-Real-IP {remote}
+		header_up X-Forwarded-For {http.request.header.CF-Connecting-IP}
+	}
+	encode gzip zstd
+	file_server
+	log {
+		output file /var/log/caddy/service-compute-ksara.log
+	}
+}
+```
+
 ## Virtual Host
 Configuration for Caddy as a Virtual Host
 
@@ -94,6 +118,26 @@ systemctl start php-fpm
 systemctl enable --now php-fpm
 ```
 
+## File Server
+Configuration for Caddy as a File Server
+
+### Config for Static Web
+
+Web Server to serve file. Also, implement the basic auth to login before access the file directory. You can generate with bcrypt.
+
+```bash title="/etc/caddy/Caddyfile"
+fileserver.ksara.xyz {
+	basicauth * {
+		user1 $2a$12$3gR4jgPU1fVmJ6/Um3aPpeJXBx5I2xEl3pCHYpa9umxZzDgvFMtBu
+	}
+	encode gzip zstd
+	root * /var/www/file
+	file_server browse
+	log {
+		output file /var/log/caddy/file-ksara.log
+	}
+}
+```
 
 ## Validate & Format Caddy Config
 To Validate and Format Caddy configuration
