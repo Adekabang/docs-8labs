@@ -5,14 +5,14 @@ sidebar_position: 2
 
 # Configuration Caddy
 
-Sample Configuration for Caddy as Web server. You can choose one that fit your condition
+Sample Configuration for Caddy as Web server. You can choose one that fit your condition.
 
 ## Reverse Proxy
-Configuration for Caddy as a Reverse Proxy
+Configuration for Caddy as a Reverse Proxy.
 
 ### Simple Config for Reverse Proxy
 
-Reverse Proxy for pointing the Web Server to Web Application Server IP and Bind the domain
+Reverse Proxy for pointing the Web Server to Web Application Server IP and Bind the domain.
 
 ```bash title="/etc/caddy/Caddyfile"
 ksara.xyz {
@@ -21,7 +21,7 @@ ksara.xyz {
 ```
 
 ### Advanced Config for Reverse Proxy
-The Advanced configuration to add X-Forwarded, Log Output and other else
+The Advanced configuration to add X-Forwarded, Log Output and other else.
 
 ```bash title="/etc/caddy/Caddyfile"
 ksara.xyz {
@@ -68,11 +68,11 @@ The Advanced configuration to add X-Forwarded, Log Output and other else with Cl
 ```
 
 ## Virtual Host
-Configuration for Caddy as a Virtual Host
+Configuration for Caddy as a Virtual Host.
 
 ### Config for Static Web
 
-Web Server to Static Web Directory
+Web Server to Static Web Directory.
 
 ```bash title="/etc/caddy/Caddyfile"
 ksara.xyz { 
@@ -88,14 +88,14 @@ ksara.xyz {
 
 ### Config for PHP Web
 
-Web Server to PHP Web Directory
+Web Server to PHP Web Directory.
 
-Install additional module to execute PHP
+Install additional module to execute PHP.
 ```bash
 sudo dnf install php-fpm php-cli php-gd -y
 ```
 
-Configuration File Sample
+Configuration File Sample.
 ```bash title="/etc/caddy/Caddyfile"
 ksara.xyz { 
         root * /var/www/html/ksara.xyz
@@ -105,23 +105,23 @@ ksara.xyz {
 }
 ```
 
-Edit PHP-FPM Config File and edit some line
+Edit PHP-FPM Config File and edit some line.
 ```bash title="/etc/php-fpm.d/www.conf"
 user = caddy
 group = caddy
 listen.acl_users = apache,nginx,caddy
 ```
 
-Restart PHP-FPM Services
+Restart PHP-FPM Services.
 ```bash
 systemctl start php-fpm
 systemctl enable --now php-fpm
 ```
 
 ## File Server
-Configuration for Caddy as a File Server
+Configuration for Caddy as a File Server.
 
-### Config for Static Web
+### Config for File Server 
 
 Web Server to serve file. Also, implement the basic auth to login before access the file directory. You can generate with bcrypt.
 
@@ -140,14 +140,14 @@ fileserver.ksara.xyz {
 ```
 
 ## Validate & Format Caddy Config
-To Validate and Format Caddy configuration
+To Validate and Format Caddy configuration.
 
 ```bash
 caddy validate --adapter caddyfile --config /etc/caddy/Caddyfile
 caddy fmt --overwrite /etc/caddy/Caddyfile
 ```
 
-Restart the Caddy Service
+Restart the Caddy Service.
 ```bash
 sudo systemctl restart caddy
 ```

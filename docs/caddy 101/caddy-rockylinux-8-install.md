@@ -60,13 +60,13 @@ sudo systemctl start caddy
 sudo systemctl status caddy
 ```
 
-Sample Output of Service status
+Sample Output of Service status.
 ![Caddy Status Service Output](./img/caddy-status.png)
 
 ### Access the sample page
 
 Open [http://localhost](http://localhost) or [http://<your_server_ip>](http://127.0.0.1) to access the sample page.
 
-Output of Caddy sample page
+Output of Caddy sample page.
 ![Caddy Sample Page](./img/caddy-sample-page.png)
 
