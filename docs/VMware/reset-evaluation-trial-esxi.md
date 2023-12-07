@@ -1,11 +1,12 @@
 ---
-title: Reset Evaluation Trial ESXI Hack
+title: Reset Evaluation Trial ESXI
 sidebar_position: 1
 ---
 
-# Reset Evaluation Trial ESXI Hack
+# Reset Evaluation Trial ESXI
 
 Reset the Evaluation Trial to 60 days again.
+NOT FOR PRODUCTION.
 Works on ESXI 8.
 ### Preparation
 You can activate the SSH service. Actions > Services > Enable Secure Shell (SSH). SSH to your ESXI Machine.
