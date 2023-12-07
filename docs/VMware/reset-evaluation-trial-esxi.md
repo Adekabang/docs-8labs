@@ -32,8 +32,8 @@ cp .#license.cfg license.cfg
 /etc/init.d/vpxa restart
 ```
 
-Or just copy this all
-```
+Or just copy this all.
+```bash
 rm -f /etc/vmware/license.cfg
 cp /etc/vmware/.#license.cfg /etc/vmware/license.cfg
 /etc/init.d/vpxa restart
