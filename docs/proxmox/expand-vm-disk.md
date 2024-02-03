@@ -8,8 +8,10 @@ Example OS: Ubuntu
 
 Make sure to adjust the LV, PV, dev name before run the command.
 
+## Resize in Proxmox UI
 Resize the file system in UI, under VM -> Hardware -> Click on the disk to resize, click "Resize disk" button.
 
+## Check Capacity on Partition
 Confirm increase in disk space (1TB in my case):
 ```bash
 lsblk
@@ -23,7 +25,9 @@ sda                         8:0    0    1T  0 disk
 └─sda3                      8:3    0    1T  0 part
   └─ubuntu--vg-ubuntu--lv 253:0    0   31G  0 lvm  /
 ```
-Resize the partition
+
+## Resize Partition
+Resize the partition using parted
 ```bash
 sudo parted
 ```
@@ -37,6 +41,7 @@ Welcome to GNU Parted! Type 'help' to view a list of commands.
 Information: You may need to update /etc/fstab.
 ```
 
+## Expand LV
 Extend the logical volume now
 ```bash
 sudo lvextend -r -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv
@@ -51,6 +56,7 @@ old_desc_blocks = 4, new_desc_blocks = 132
 The filesystem on /dev/mapper/ubuntu--vg-ubuntu--lv is now 276560896 (4k) blocks long.
 ```
 
+## Expand PV
 Resize the physical volume (may or may not need)
 ```bash
 sudo pvresize /dev/sda3
@@ -61,6 +67,7 @@ Physical volume "/dev/sda3" changed
 1 physical volume(s) resized or updated / 0 physical volume(s) not resized
 ```
 
+## Check Capacity on Partition after Resizing
 Confirm resize complete
 ```bash
 $ lsblk
