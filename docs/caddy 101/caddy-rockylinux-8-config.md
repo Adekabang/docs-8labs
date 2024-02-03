@@ -101,7 +101,7 @@ ksara.xyz {
         root * /var/www/html/ksara.xyz
         file_server
         encode gzip zstd
-        php_fascgi unix//run/php-fpm/www.sock
+        php_fastcgi unix//run/php-fpm/www.sock
 }
 ```
 
