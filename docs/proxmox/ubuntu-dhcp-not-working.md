@@ -20,7 +20,7 @@ ln -s /etc/machine-id /var/lib/dbus/machine-id
 Alternatively, prepare a VM template explicitly setting the dhcp client identifier to mac.
 
 ### Example 1: 
-set the "dhcp-identifier: mac" in the /etc/netplan/*.yaml file as below:
+set the `dhcp-identifier: mac` in the /etc/netplan/*.yaml file as below:
 ```bash
 network:
   version: 2
@@ -34,6 +34,6 @@ network:
 ```
 
 ### Example 2: 
-set the "ClientIdentifier=mac" in the /etc/systemd/network/default.network file.
+set the `ClientIdentifier=mac` in the /etc/systemd/network/default.network file.
 
 Reference: [link](https://kb.vmware.com/s/article/82229)
