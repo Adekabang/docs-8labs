@@ -10,12 +10,12 @@ Tested in Rocky Linux 9
 1. IPv4 allocation minimum /30
 2. Client Server
 3. VPS or VM for Wireguard Server
-- SELinux is running in permissive mode
+    - SELinux is running in permissive mode
 ```bash
 setenforce permissive
 reboot
 ```
-- Disable Firewalld
+    - Disable Firewalld
 ```bash
 systemctl stop firewalld
 systemctl disable firewalld
