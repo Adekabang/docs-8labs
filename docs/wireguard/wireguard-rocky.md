@@ -1,13 +1,13 @@
 ---
-title: Assign Public IPv4 Wireguard Rocky Linux
+title: Assign Public IPv4 & IPv6 Wireguard Rocky Linux
 sidebar_position: 1
 ---
 
-# Assign Public IPv4 Wireguard Rocky Linux
+# Assign Public IPv4 & IPv6 Wireguard Rocky Linux
 Tested in Rocky Linux 9
 
 ## Prerequisite
-1. IPv4 allocation minimum /30
+1. IPv4 allocation minimum /30 or IPv6
 2. Client Server
 3. VPS or VM for Wireguard Server
     - SELinux is running in permissive mode
@@ -71,13 +71,17 @@ sudo vi /etc/wireguard/wg0.conf
 # Wireguard Server private key - server.key
 PrivateKey = # Copy Server private key here
 # Wireguard interface will be run at 10.8.0.1
-Address = 10.8.0.1/24 #any IP private network
+Address = 10.8.0.1/24, fd00::1/64 #any IP private network
 
 # Clients will connect to UDP port 51820
 ListenPort = 51820
 
 # Ensure any changes will be saved to the Wireguard config file
 SaveConfig = true
+
+# Change IPv6_CLIENT_ASSIGN to ipv6 public and ens33 to your interface
+PostUp=ip -6 neigh add proxy IPv6_CLIENT_ASSIGN dev ens33
+PostDown=ip -6 neigh del proxy IPv6_CLIENT_ASSIGN dev ens33
 
 [Peer]
 # Wireguard client public key - client1.pub
@@ -97,6 +101,7 @@ net.ipv4.conf.all.proxy_arp=1
 
 # Port forwarding for IPv6
 net.ipv6.conf.all.forwarding=1
+net.ipv6.conf.all.proxy_ndp=1
 ```
 
 ```bash
@@ -125,7 +130,7 @@ PrivateKey = # Copy client private key here
 [Peer]
 # Wireguard Server public key - server.pub
 PublicKey = #Copy server public key here
-AllowedIPs = 0.0.0.0/0 # makes your home server send all outbound packets via this tunnel
+AllowedIPs = 0.0.0.0/0,::/0 # makes your home server send all outbound packets via this tunnel
 Endpoint = # copy wireguard ip public:port
 # Sending Keepalive every 25 sec
 PersistentKeepalive = 25
@@ -140,6 +145,7 @@ sudo wg-quick down /etc/wireguard/wg0.conf
 ## Reference
 - [How to Install Wireguard VPN on Rocky Linux 9](https://www.howtoforge.com/how-to-install-wireguard-vpn-on-rocky-linux-9/)
 - [How to assign public IPv4 to a Wireguard client?](https://www.reddit.com/r/WireGuard/comments/ld09tr/how_to_assign_public_ipv4_to_a_wireguard_client/)
+- [DigitalOcean, assign public ipv6 to wireguard clients](https://gist.github.com/MartinBrugnara/cb0cd5b53a55861d92ecba77c80ba729)
 
 
 
