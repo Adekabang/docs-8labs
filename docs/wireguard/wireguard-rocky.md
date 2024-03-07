@@ -147,7 +147,7 @@ sudo wg-quick up /etc/wireguard/wg0.conf
 - [How to Install Wireguard VPN on Rocky Linux 9](https://www.howtoforge.com/how-to-install-wireguard-vpn-on-rocky-linux-9/)
 - [How to assign public IPv4 to a Wireguard client?](https://www.reddit.com/r/WireGuard/comments/ld09tr/how_to_assign_public_ipv4_to_a_wireguard_client/)
 - [DigitalOcean, assign public ipv6 to wireguard clients](https://gist.github.com/MartinBrugnara/cb0cd5b53a55861d92ecba77c80ba729)
-
+- [Wireguard and ipv6](https://www.adyxax.org/blog/2023/02/28/wireguard-and-ipv6/)
 
 
 
