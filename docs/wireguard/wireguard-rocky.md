@@ -137,9 +137,10 @@ PersistentKeepalive = 25
 ```
 
 ## Maintainance Server
+any change in `wg0.conf` need stop the wg first, update the conf, and start again.
 ```bash
-sudo wg-quick up /etc/wireguard/wg0.conf
 sudo wg-quick down /etc/wireguard/wg0.conf
+sudo wg-quick up /etc/wireguard/wg0.conf
 ```
 
 ## Reference
