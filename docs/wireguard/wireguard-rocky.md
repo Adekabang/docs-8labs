@@ -136,7 +136,7 @@ sudo wg-quick up /etc/wireguard/wg0.conf
 sudo wg-quick down /etc/wireguard/wg0.conf
 ```
 
-### Reference
+## Reference
 - [How to Install Wireguard VPN on Rocky Linux 9](https://www.howtoforge.com/how-to-install-wireguard-vpn-on-rocky-linux-9/)
 - [How to assign public IPv4 to a Wireguard client?](https://www.reddit.com/r/WireGuard/comments/ld09tr/how_to_assign_public_ipv4_to_a_wireguard_client/)
 
