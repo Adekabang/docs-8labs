@@ -5,7 +5,8 @@ sidebar_position: 4
 
 # Importing an OVA Virtual Machine
 
-
+Example OVA: Wazuh
+make sure you execute using sudo mode and in the home directory (or other you know well)
 
 ### Preparation
 ```bash
