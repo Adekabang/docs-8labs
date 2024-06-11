@@ -65,7 +65,7 @@ Sample Output of Service status.
 
 ### Access the sample page
 
-Open [http://localhost](http://localhost) or [http://<your_server_ip>](http://127.0.0.1) to access the sample page.
+Open [http://localhost](http://localhost/) or [http://your-server-ip](http://127.0.0.1/) to access the sample page.
 
 Output of Caddy sample page.
 ![Caddy Sample Page](./img/caddy-sample-page.png)
