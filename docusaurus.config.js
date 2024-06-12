@@ -5,6 +5,7 @@
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
 import {themes as prismThemes} from 'prism-react-renderer';
+import tailwindPlugin from "./plugins/tailwind-config.cjs"; // add this
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -133,6 +134,7 @@ const config = {
         additionalLanguages: ['bash'],
       },
     }),
+    plugins:[tailwindPlugin],
 };
 
 export default config;
