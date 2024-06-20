@@ -2,46 +2,43 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Introduction
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Welcome to 8Labs! We're excited to have you on board. This documentation will guide you through the initial steps of using our platform, including registration, purchasing a Virtual Labs, and accessing your Virtual Labs. Let's discover **8Labs in less than 5 minutes**.
 
-## Getting Started
+## Registration
 
-Get started by **creating a new site**.
+Registering with 8Labs is straightforward. Just follow these simple steps:
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+1. Go to our [Registration Page](https://my.8labs.id/register).
+2. Enter your information:
+   - First Name
+   - Last Name
+   - Email
+   - Password
+3. Click "Register" and you're all set!
 
-### What you'll need
+## How to Purchase a Virtual Labs
 
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+Once you're registered, purchasing a Virtual Labs is quick and easy:
 
-## Generate a new site
+1. [Log in](https://my.8labs.id/login) to your 8Labs account.
+2. Navigate to the "Shop > Virtual Labs" section.
+3. Choose your desired Virtual Labs plan based on your needs.
+4. Set your Virtual Labs' Hostname, Operating System and Password.
+5. Complete the payment process using your preferred method (I know. It's Free).
+6. Your Virtual Labs will be ready to use within 1-15 minutes.
 
-Generate a new Docusaurus site using the **classic template**.
+## How to Access Your Virtual Labs
 
-The classic template will automatically be added to your project after you run the command:
+Accessing your Virtual Labs is simple:
 
-```bash
-npm init docusaurus@latest my-website classic
-```
+1. Log in your account to [Client Portal](https://my.8labs.id/) or you can directly to [Cloud Portal](https://cloud.8labs.id/) using the same account as Client Portal (Jump to step 4).
+2. Go to the "Customer Area" section and you will see your purchased products.
+3. Select 👁️ (view) action button and click "Login to Product".
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+4. Select the Virtual Labs you want to access.
+5. For the first time, Start the Virtual Labs
+4. Use our intuitive console panel, featuring noVNC and xTerm.js, to manage and control your Virtual Labs.
 
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+That's it! You're now ready to start using your 8Labs Virtual Labs and explore the endless possibilities of your home lab environment. If you have any questions or need further assistance, our support team is here to help. Happy ngoprek!
