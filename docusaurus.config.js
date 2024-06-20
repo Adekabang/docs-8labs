@@ -71,18 +71,24 @@ const config = {
         logo: {
           alt: '8Labs Cloud Environment',
           src: 'img/logo.svg',
+          href: 'https://8labs.id'
         },
         items: [
           {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Documentation',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          // {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
+            href: 'https://my.8labs.id',
+            label: 'Client Panel',
+            position: 'right',
+          },
+          {
+            href: 'https://cloud.8labs.id',
+            label: 'Cloud Panel',
             position: 'right',
           },
         ],
@@ -91,11 +97,19 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: '8Labs',
             items: [
               {
-                label: 'Tutorial',
+                label: 'Documentation',
                 to: '/docs/intro',
+              },
+              {
+                label: 'Client Panel',
+                href: 'https://my.8labs.id',
+              },
+              {
+                label: 'Cloud Panel',
+                href: 'https://cloud.8labs.id',
               },
             ],
           },
