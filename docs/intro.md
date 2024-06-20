@@ -36,9 +36,8 @@ Accessing your Virtual Labs is simple:
 1. Log in your account to [Client Portal](https://my.8labs.id/) or you can directly to [Cloud Portal](https://cloud.8labs.id/) using the same account as Client Portal (Jump to step 4).
 2. Go to the "Customer Area" section and you will see your purchased products.
 3. Select 👁️ (view) action button and click "Login to Product".
-
 4. Select the Virtual Labs you want to access.
 5. For the first time, Start the Virtual Labs
-4. Use our intuitive console panel, featuring noVNC and xTerm.js, to manage and control your Virtual Labs.
+6. Use our intuitive console panel, featuring noVNC and xTerm.js, to manage and control your Virtual Labs.
 
 That's it! You're now ready to start using your 8Labs Virtual Labs and explore the endless possibilities of your home lab environment. If you have any questions or need further assistance, our support team is here to help. Happy ngoprek!
