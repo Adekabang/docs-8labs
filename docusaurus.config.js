@@ -149,6 +149,8 @@ const config = {
       },
     }),
     plugins:[tailwindPlugin],
+    scripts: [{src: 'https://beacon.8labs.id/js/script.js', defer: true, 'data-domain': 'docs.8labs.id'}],
+    
 };
 
 export default config;
