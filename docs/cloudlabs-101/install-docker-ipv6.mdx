@@ -1,0 +1,134 @@
+---
+title: Install Docker and Enable IPv6 network
+sidebar_position: 1
+---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Install Docker and Enable IPv6 network
+This document provides a comprehensive guide for installing Docker and enabling IPv6 networking on a cloud environment platform. It covers the installation process for systems using apt (Debian, Ubuntu) and dnf (CentOS, Rocky Linux, Alma Linux) package managers. By following these steps, you will be able to set up Docker for containerized application deployment and configure it to support IPv6 networking, ensuring compatibility and scalability for modern network environments.
+
+
+## Preparation - Update the package list
+
+<Tabs groupId="operating-systems">
+  <TabItem value="apt" label="Debian, Ubuntu">
+  ```bash
+  sudo apt update
+  ```
+  </TabItem>
+  <TabItem value="dnf" label="CentOS Stream, RockyLinux, AlmaLinux">
+  ```bash
+  sudo dnf update
+  ```
+  </TabItem>
+</Tabs>
+
+## Install docker
+<Tabs groupId="operating-systems">
+  <TabItem value="apt" label="Debian, Ubuntu">
+  ```bash
+  sudo apt -y install docker.io docker-compose
+  ```
+  </TabItem>
+  <TabItem value="dnf" label="CentOS Stream, RockyLinux, AlmaLinux">
+  ```bash
+  sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+  sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+  ```
+  </TabItem>
+</Tabs>
+
+## Enable the service to start on boot
+<Tabs groupId="operating-systems">
+  <TabItem value="apt" label="Debian, Ubuntu">
+  ```bash
+  sudo systemctl enable docker
+  ```
+  </TabItem>
+  <TabItem value="dnf" label="CentOS Stream, RockyLinux, AlmaLinux">
+  ```bash
+  sudo systemctl enable docker
+  ```
+  </TabItem>
+</Tabs>
+
+## Start the service
+<Tabs groupId="operating-systems">
+  <TabItem value="apt" label="Debian, Ubuntu">
+  ```bash
+  sudo systemctl start docker
+  ```
+  </TabItem>
+  <TabItem value="dnf" label="CentOS Stream, RockyLinux, AlmaLinux">
+  ```bash
+  sudo systemctl start docker
+  ```
+  </TabItem>
+</Tabs>
+
+## Check docker status
+<Tabs groupId="operating-systems">
+  <TabItem value="apt" label="Debian, Ubuntu">
+  ```bash
+  sudo systemctl status docker
+  ```
+  </TabItem>
+  <TabItem value="dnf" label="CentOS Stream, RockyLinux, AlmaLinux">
+  ```bash
+  sudo systemctl status docker
+  ```
+  </TabItem>
+</Tabs>
+
+## Setting up Docker’s networks
+we are going to use the reserved range of IPv6.
+- 2001:0db8:0000:0001:1000::/68 as the default network range.
+- 2001:0db8:0000:0001:2000::/68 as a default address pool. New networks should use /80 ranges. A /68 range contains 4096 /80 subnets.
+
+```bash
+cat <<EOF | sudo tee /etc/docker/daemon.json >/dev/null
+{
+  "ipv6": true,
+  "fixed-cidr-v6": "2001:0db8:0000:0001:1000::/68",
+  "experimental": true,
+  "ip6tables": true,
+  "default-address-pools":[
+    {"base": "172.31.0.0/16", "size": 24},
+    {"base": "2001:0db8:0000:0001:2000::/68", "size": 80}
+  ],
+  "dns": ["2a00:1098:2c::1", "2a01:4f9:c010:3f02::1", "2a00:1098:2b::1"]
+}
+EOF
+
+sudo systemctl restart docker
+```
+
+
+## Test the public IP from docker
+```bash
+docker run --rm alpine wget -qO - https://ifconfig.me && echo ""
+```
+it should be show your public IPv6 address
+
+## Test the public IP from docker compose
+Make a docker-compose.yaml
+```yaml
+services:
+  test:
+    image: alpine
+    command: /bin/sh -c "wget -qO - https://ifconfig.me && echo ''"
+networks:
+  default:
+    enable_ipv6: true
+```
+and execute this. It should generates an /80 network. Docker compose creates a default network for each docker compose file.
+```bash
+docker compose run --rm test
+```
+
+## Reference
+- [Using Docker on an IPv6 only host on Ubuntu 22.04](https://g3rv4.com/2023/07/running-docker-ipv6-only-network)
+- [How To Install and Use Docker Compose on Rocky Linux 9](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-rocky-linux-9)
+
+
