@@ -25,7 +25,7 @@ Once you're registered, purchasing a Virtual Lab is quick and easy:
 1. [Log in](https://my.8labs.id/login) to your 8Labs account.
 2. Navigate to the "Shop > Virtual Labs" section.
 3. Choose your desired Virtual Lab plan based on your needs.
-4. Set your Virtual Lab's Hostname, Operating System, and Password.
+4. Set your Virtual Lab's `Hostname`, `Operating System`, and `Password`.
 5. Complete the payment process using your preferred method (don't worry, it's free).
 6. Your Virtual Lab will be ready to use within 1-15 minutes.
 
