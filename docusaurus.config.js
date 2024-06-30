@@ -149,7 +149,22 @@ const config = {
       },
     }),
     plugins:[tailwindPlugin],
-    scripts: [{src: 'https://beacon.8labs.id/js/script.js', defer: true, 'data-domain': 'docs.8labs.id'}],
+    scripts: [
+      {src: 'https://beacon.8labs.id/js/script.js', defer: true, 'data-domain': 'docs.8labs.id'},
+      {
+        "data-name":"NBJ-Widget", 
+        "data-cfasync":"false", 
+        "src":"https://www.nihbuatjajan.com/javascripts/widget.prod.min.js?u=adekabang", 
+        "data-id":"adekabang", 
+        "data-domain":"https://www.nihbuatjajan.com", 
+        "data-description":"", 
+        "data-message":"", 
+        "data-color":"#b91c1c", 
+        "data-position":"Right", 
+        "data-X_margin":"18", 
+        "data-Y_margin":"18"}
+
+    ],
     
 };
 
