@@ -1,6 +1,6 @@
-# Website
+# Docs | 8Labs.
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+This [documentation](https://docs.8labs.id) is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
 
 ### Installation
 
