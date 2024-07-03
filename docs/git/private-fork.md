@@ -7,7 +7,7 @@ sidebar_position: 1
 Creating a private fork of a public repository allows you to work on a project privately while still being able to sync with the original public source. This guide outlines the process of setting up a private fork, making changes, syncing with the public repo, and contributing back to the original project. Follow these steps to maintain your own private version of a public repository while staying up-to-date with upstream changes.
 
 ## Step 1: Create a private fork:
-1. Create a new private repository on GitHub.
+1. Create a new private repository on [GitHub](https://github.com/new).
 2. Open terminal and run:
 ```bash
 git clone --bare https://github.com/original-owner/public-repo.git
