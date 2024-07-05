@@ -64,6 +64,45 @@ git push origin pr-branch
 
 Remember to repeat steps [3](/docs/git/private-fork#step-3-sync-with-the-public-repo) and [4](/docs/git/private-fork#step-4-create-a-pull-request-to-the-public-repo) as needed to keep your repos in sync and contribute changes back to the public repo.
 
+## Miscellaneous
+### Download from Private Repository
+Download the latest release binary from a private GitHub repo. (i.e. a .tar.gz that you have manually uploaded in a GitHub release). Update OAUTH_TOKEN, OWNER, REPO, FILE_NAME with your custom values.
+```bash
+#!/usr/bin/env bash
+
+# Authorize to GitHub to get the latest release tar.gz
+# Requires: oauth token, https://help.github.com/articles/creating-an-access-token-for-command-line-use/
+# Requires: jq package to parse json
+
+# Your oauth token goes here, see link above
+OAUTH_TOKEN="34k234lk234lk2j3lk4j2l3k4j2kj3lk"
+# Repo owner (user id)
+OWNER="your-user-name"
+# Repo name
+REPO="the-repo-clean-name"
+# The file name expected to download. This is deleted before curl pulls down a new one
+FILE_NAME="file-you-are-downloading.tar.gz"
+
+# Concatenate the values together for a 
+API_URL="https://$OAUTH_TOKEN:@api.github.com/repos/$OWNER/$REPO"
+
+# Gets info on latest release, gets first uploaded asset id of a release,
+# More info on jq being used to parse json: https://stedolan.github.io/jq/tutorial/
+ASSET_ID=$(curl $API_URL/releases/latest | jq -r '.assets[0].id')
+echo "Asset ID: $ASSET_ID"
+
+# curl does not allow overwriting file from -O, nuke
+rm -f $FILE_NAME
+
+# curl:
+# -O: Use name provided from endpoint
+# -J: "Content Disposition" header, in this case "attachment"
+# -L: Follow links, we actually get forwarded in this request
+# -H "Accept: application/octet-stream": Tells api we want to dl the full binary
+curl -O -J -L -H "Accept: application/octet-stream" "$API_URL/releases/assets/$ASSET_ID"
+```
+
 ## Reference
 - [Duplicating a repository](https://help.github.com/articles/duplicating-a-repository/)
 - [GitHub: How to make a fork of public repository private?](https://stackoverflow.com/questions/10065526/github-how-to-make-a-fork-of-public-repository-private)
+- [private-github-release-download.sh](https://gist.github.com/illepic/32b8ad914f1dc80446c7e81c3be4e286)
