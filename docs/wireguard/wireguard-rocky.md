@@ -23,26 +23,26 @@ systemctl disable firewalld
 
 ## Enable Wireguard Kernel Module
 ```bash
-sudo modprobe wireguard
+modprobe wireguard
 lsmod | grep wireguard
 ```
 
 ```bash
-sudo echo wireguard > /etc/modules-load.d/wireguard.conf
+echo wireguard > /etc/modules-load.d/wireguard.conf
 ```
 
 ## Install Wireguard
 ```bash
-sudo dnf install wireguard-tools
+dnf install wireguard-tools
 ```
 
 ## Generate Server Key Pair
 ```bash
-wg genkey | sudo tee /etc/wireguard/server.key
-sudo chmod 0400 /etc/wireguard/server.key
+wg genkey | tee /etc/wireguard/server.key
+chmod 0400 /etc/wireguard/server.key
 ```
 ```bash
-sudo cat /etc/wireguard/server.key | wg pubkey | sudo tee /etc/wireguard/server.pub
+cat /etc/wireguard/server.key | wg pubkey | tee /etc/wireguard/server.pub
 ```
 ```bash
 cat /etc/wireguard/server.key
@@ -64,10 +64,11 @@ cat /etc/wireguard/clients/client1.pub
 
 ## Configure Wireguard - Server Side
 ```bash
-sudo vi /etc/wireguard/wg0.conf
+vi /etc/wireguard/wg0.conf
 ```
 ### Server Side Configuration
 ```bash
+[Interface]
 # Wireguard Server private key - server.key
 PrivateKey = # Copy Server private key here
 # Wireguard interface will be run at 10.8.0.1
@@ -92,7 +93,7 @@ AllowedIPs = # copy IP Public/cidr
 ```
 ### Port Forwarding
 ```bash
-sudo vi /etc/sysctl.conf
+vi /etc/sysctl.conf
 ```
 ```bash
 # Port Forwarding for IPv4
@@ -105,15 +106,15 @@ net.ipv6.conf.all.proxy_ndp=1
 ```
 
 ```bash
-sudo sysctl -p
+sysctl -p
 reboot #prefered
 ```
 
 ### Start Wireguard Server
 ```bash
-sudo systemctl start wg-quick@wg0.service
-sudo systemctl enable wg-quick@wg0.service
-sudo systemctl status wg-quick@wg0.service
+systemctl start wg-quick@wg0.service
+systemctl enable wg-quick@wg0.service
+systemctl status wg-quick@wg0.service
 
 ```
 
@@ -139,8 +140,8 @@ PersistentKeepalive = 25
 ## Maintainance Server
 any change in `wg0.conf` need stop the wg first, update the conf, and start again.
 ```bash
-sudo wg-quick down /etc/wireguard/wg0.conf
-sudo wg-quick up /etc/wireguard/wg0.conf
+wg-quick down /etc/wireguard/wg0.conf
+wg-quick up /etc/wireguard/wg0.conf
 ```
 
 ## Reference
