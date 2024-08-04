@@ -121,6 +121,9 @@ systemctl status wg-quick@wg0.service
 
 ## Configure Wireguard - Client Side
 This configuration is implemented on your client-side. Adjust based on your system.
+```bash
+vi /etc/wireguard/wg0.conf
+```
 ### Client Side Configuration
 ```bash
 [Interface]
