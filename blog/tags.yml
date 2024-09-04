@@ -1,16 +1,24 @@
-facebook:
-  label: Facebook
-  permalink: /facebook
-  description: Facebook tag description
-hello:
-  label: Hello
-  permalink: /hello
-  description: Hello tag description
+ipv6:
+  label: ipv6
+  permalink: /ipv6
+  description: IPv6 tag description
+personal-asn:
+  label: Personal ASN
+  permalink: /personal-asn
+  description: Personal ASN tag description
+vps:
+  label: VPS
+  permalink: /vps
+  description: VPS tag description
+bgp:
+  label: BGP
+  permalink: /bgp
+  description: BGP tag description
+debian:
+  label: Debian
+  permalink: /debian
+  description: Debian tag description
 docusaurus:
   label: Docusaurus
   permalink: /docusaurus
   description: Docusaurus tag description
-hola:
-  label: Hola
-  permalink: /hola
-  description: Hola tag description
