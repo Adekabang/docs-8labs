@@ -1,8 +1,8 @@
 ---
-slug: long-blog-post
-title: Long Blog Post
-authors: endi
-tags: [hello, docusaurus]
+slug: personal-asn-ipv6-journey
+title: Personal ASN and IPv6 Journey
+authors: Adekabang
+tags: [ipv6, personal asn, bgp, vps, debian]
 ---
 
 # Personal ASN dan IPv6
