@@ -13,27 +13,25 @@ Last Update: 25 March 2024
 
 ## ASN Application via Lagrange
 
-<aside>
-⚠️ Disclaimer: Tidak ada sponsor dari Lagrange cuman discount
 
-</aside>
+> ⛔ Disclaimer: Tidak ada sponsor dari Lagrange cuman discount
 
-[https://lagrange.cloud/next-level-networking](https://lagrange.cloud/next-level-networking)
+
+[Lagrange Website](https://lagrange.cloud/next-level-networking)
 
 ![Lagrange Banner](01-lagrange-banner.png)
 
 Pendaftaran ASN melalui Lagrange per tanggal 25 Maret 2024 ada discount 40% off dari £25 ke £15.
 
 1. Untuk memulai aplikasi ASN, bisa langsung “Try now” dan lakukan Register akun Lagrange.
-2. Langsung aja “Create an ASN” di page [https://lagrange.cloud/console/lir](https://lagrange.cloud/console/lir)
+2. Langsung aja “Create an ASN” di page [LIR Services - Lagrange](https://lagrange.cloud/console/lir)
     
     ![Lagrange LIR Service](02-lagrange-lir-service.png)
     
 3. Ikutin proses purchasingnya.
 4. Setelah itu akan ada Applicationnya, pilih guided, nanti akan diarahkan untuk proses pembuatan akun dan pembuatan object di RIPE. kalau bingung apa yang di isi bisa juga mengacu ke video dibawah:
-    1. Video pembuatan object di RIPE 
-        
-        [Rifqi Arief in IPv6 Indonesia](https://t.me/IPv6_Indonesia/104851/110743)
+    1. Video pembuatan object di RIPE :
+        [Rifqi Arief in IPv6 Indonesia Telegram Group](https://t.me/IPv6_Indonesia/104851/110743)
         
     2. Pastikan utk mencatat beberapa informasi dibawah saat pembuatan:
         1. `RIPE ADMIN-C`: [Singkatan_Nama][Identifier]-RIPE (generate dari RIPE)
@@ -50,17 +48,13 @@ Pendaftaran ASN melalui Lagrange per tanggal 25 Maret 2024 ada discount 40% off 
 
 Jika sudah sampai page ini, proses selanjutnya adalah pembelian VPS yang support BGP session.
 
-<aside>
-⚠️ Pastikan VPS yang disewa berada pada region EU, seperti Amsterdam, Frankfurt, UK
 
-</aside>
+> ⛔ Pastikan VPS yang disewa berada pada region EU, seperti Amsterdam, Frankfurt, UK
 
-<aside>
-⚠️ Disclaimer: Tidak ada sponsor dari iFog (cuman harga cukup terjangkau)
+> ⛔ Disclaimer: Tidak ada sponsor dari iFog (cuman harga cukup terjangkau)
 
-</aside>
 
-1. Pilih VPS pada region EU (kasus saya pilih di Amsterdam 1) [https://ifog.ch/en/vps](https://ifog.ch/en/vps)
+1. Pilih VPS pada region EU (kasus saya pilih di Amsterdam 1) [iFog Website](https://ifog.ch/en/vps)
     
     ![iFog VPS Pricelist](04-ifog-vps-price.png)
     
@@ -73,11 +67,11 @@ Jika sudah sampai page ini, proses selanjutnya adalah pembelian VPS yang support
     5. Additional v6 BGP Transit via ASxxxx: optional 
 4. Simpan Invoice untuk nanti di upload ke ticket Lagrange
 5. untuk pengisian Lagrange bisa menggunakan panduan berikut:
-    1. Partner 1 ASN: ASN punya iFog atau VPS provider lainnya. [https://ifog.ch/en/vps/vps-amsterdam](https://ifog.ch/en/vps/vps-amsterdam)
+    1. Partner 1 ASN: ASN punya iFog atau VPS provider lainnya. [iFog AMS VPS](https://ifog.ch/en/vps/vps-amsterdam)
         
         ![iFOg BGP Details](05-ifog-bgp-details.png)
         
-    2. Partner 1 NOC: email dari iFog atau VPS provider lainnya. [https://fognet.ch/contact](https://fognet.ch/contact)
+    2. Partner 1 NOC: email dari iFog atau VPS provider lainnya. [iFog NOC Contact](https://fognet.ch/contact)
         
         ![iFog Contact](06-ifog-contact.png)
         
@@ -100,10 +94,10 @@ Setelah ini akan ada beberapa proses approval yang dibutuhkan dari Lagrange:
 
 ---
 
-### Catatan Petinggi
+### 👨‍🦳 Catatan Pendahulu
 
-- Tapi kalau mau lepas VPS EU, wajib cari upstream ke EU, Ke netassist atau udn aja atau bgptunnel
-- [https://my.bgptunnel.com/](https://my.bgptunnel.com/) pake ini om buat presence di EU kalo nanti lepas VPS EU
+> - Tapi kalau mau lepas VPS EU, wajib cari upstream ke EU, Ke netassist atau udn aja atau bgptunnel
+> - [my.bgptunnel.com](https://my.bgptunnel.com/) pake ini om buat presence di EU kalo nanti lepas VPS EU
 
 ## Peering Application
 
@@ -123,25 +117,25 @@ Setelah ASN terbit, akan ada permintaan utk pengisian Application From dari FogI
 - `24/7 NOC phone`: No Telp Sendiri
 - `A list of prefixes you plan to announce`: Prefix yang didapat dari Lagrange atau sponsor
 
-### Catatan Petinggi
+### 👨‍🦳 Catatan Pendahulu
 
-- AS-SET full itu ada ASNnya didepan
-    - Sudah gak bisa pakai AS-SET pendek
-    - Karena yah ada drama sblmnya hahhaa
-    - Tapi kalo penasaran, coba aja
-- AS-UPSTREAMS itu untuk upstream ya
-    - JANGAN DIMASUKKAN KE AS-SET UTAMA
-    - Pisah ya om
-- AS-SET khusus ASN sendiri dan downstream dan AS-SET khusus upstream
-- ...Untuk ASXXXXXX:AS-UPSTREAMS itu ditaruh di whois ASN aja, buat import export....
-    - Jangan dimasukkan / dikirimkan ke peeringdb maupun upstream, langsung digaplok, 100%
-    - Yang dikirim ke peeringdb  maupun upstream, yang ASXXXXXX:AS-SET
-    - Nah, pengisiannya juga membernya hanya ASN itu, dan downstream
-    - Selain itu jangan coba coba masukkin, nnti bisa bisa ditabok lagi
+>- AS-SET full itu ada ASNnya didepan
+>    - Sudah gak bisa pakai AS-SET pendek
+>    - Karena yah ada drama sblmnya hahhaa
+>    - Tapi kalo penasaran, coba aja
+>- AS-UPSTREAMS itu untuk upstream ya
+>    - JANGAN DIMASUKKAN KE AS-SET UTAMA
+>    - Pisah ya om
+>- AS-SET khusus ASN sendiri dan downstream dan AS-SET khusus upstream
+>- ...Untuk ASXXXXXX:AS-UPSTREAMS itu ditaruh di whois ASN aja, buat import export....
+>    - Jangan dimasukkan / dikirimkan ke peeringdb maupun upstream, langsung digaplok, 100%
+>    - Yang dikirim ke peeringdb  maupun upstream, yang ASXXXXXX:AS-SET
+>    - Nah, pengisiannya juga membernya hanya ASN itu, dan downstream
+>    - Selain itu jangan coba coba masukkin, nnti bisa bisa ditabok lagi
 
 ## PeeringDB
 
-1. Lakukan registrasi di PeeringDB [https://www.peeringdb.com/register](https://www.peeringdb.com/register).
+1. Lakukan registrasi di [PeeringDB](https://www.peeringdb.com/register).
 2. Masukkan email yang terdaftar di RIPE.
 3. Masukkan ASN dan Organization (Nama Lengkap) pada bagian Affiliate with Organization.
 
@@ -186,7 +180,7 @@ ssh bgp-server
 
 ## Preparation
 
-1. Edit network interfaces & sesuaikan masing masing parameter <> (nama interface mungkin berbeda)
+1. Edit network interfaces & sesuaikan masing masing parameter `< >` (nama interface mungkin berbeda)
     
     ```bash
     vim /etc/network/interfaces
@@ -368,7 +362,7 @@ ssh bgp-server
     
 3. Pre Setup (optional)
     
-    https://github.com/Xeoncross/lowendscript, scope:
+    [Github: Xeoncross/lowendscript](https://github.com/Xeoncross/lowendscript), scope:
     
     - update_timezone
     - remove_unneeded
@@ -645,11 +639,9 @@ ssh bgp-server
 
 ## Reference
 
-[https://pathvector.io/docs/installation](https://pathvector.io/docs/installation)
-
-[https://t.me/IPv6_Indonesia/104851](https://t.me/IPv6_Indonesia/104851)
-
-[https://www.youtube.com/watch?v=a51noB2brjM](https://www.youtube.com/watch?v=a51noB2brjM)
+- [https://pathvector.io/docs/installation](https://pathvector.io/docs/installation)
+- [https://t.me/IPv6_Indonesia/104851](https://t.me/IPv6_Indonesia/104851)
+- [https://www.youtube.com/watch?v=a51noB2brjM](https://www.youtube.com/watch?v=a51noB2brjM)
 
 # Part 3: Set Up Interface
 

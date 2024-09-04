@@ -1,24 +1,24 @@
 ipv6:
-  label: ipv6
+  label: IPv6
   permalink: /ipv6
-  description: IPv6 tag description
+  description: All about IPv6
 personal-asn:
   label: Personal ASN
   permalink: /personal-asn
-  description: Personal ASN tag description
+  description: All about Personal ASN
 vps:
   label: VPS
   permalink: /vps
-  description: VPS tag description
+  description: All about VPS
 bgp:
   label: BGP
   permalink: /bgp
-  description: BGP tag description
+  description: All about BGP
 debian:
   label: Debian
   permalink: /debian
-  description: Debian tag description
+  description: All about Debian
 docusaurus:
   label: Docusaurus
   permalink: /docusaurus
-  description: Docusaurus tag description
+  description: All about Docusaurus
