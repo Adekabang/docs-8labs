@@ -41,7 +41,13 @@ If you are using VirtualLabs Medium (dual-stack), it is recommended to temporari
 
 To remove your private IPv4 address, use the following command:
 <Tabs groupId="operating-systems">
-  <TabItem value="apt,dnf" label="Ubuntu, Debian, CentOS">
+  <TabItem value="apt" label="Ubuntu, Debian">
+  
+  ```bash
+  ip address del <your_private_IPv4>/24 dev eth0
+  ```
+  </TabItem>
+    <TabItem value="dnf" label="CentOS">
   
   ```bash
   ip address del <your_private_IPv4>/24 dev eth0
@@ -65,12 +71,15 @@ This script works best on a *fresh* and *clean* operating system.
 
 Run the following command in your terminal:
 <Tabs groupId="operating-systems">
-  <TabItem value="apt,dnf" label="Ubuntu, Debian, CentOS">
-  
+  <TabItem value="apt" label="Ubuntu, Debian">
   ```bash
   URL=https://www.aapanel.com/script/install_7.0_en.sh && if [ -f /usr/bin/curl ];then curl -ksSO "$URL" ;else wget --no-check-certificate -O install_7.0_en.sh "$URL";fi;bash install_7.0_en.sh aapanel
   ```
-  
+  </TabItem>
+    <TabItem value="dnf" label="CentOS">
+  ```bash
+  URL=https://www.aapanel.com/script/install_7.0_en.sh && if [ -f /usr/bin/curl ];then curl -ksSO "$URL" ;else wget --no-check-certificate -O install_7.0_en.sh "$URL";fi;bash install_7.0_en.sh aapanel
+  ```
   </TabItem>
 </Tabs>
 
