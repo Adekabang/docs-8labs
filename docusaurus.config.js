@@ -14,7 +14,7 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
+  url: 'https://docs.8labs.id',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -150,22 +150,8 @@ const config = {
     }),
     plugins:[tailwindPlugin],
     scripts: [
-      {src: 'https://beacon.8labs.id/js/script.js', defer: true, 'data-domain': 'docs.8labs.id'},
-      {
-        "data-name":"NBJ-Widget", 
-        "data-cfasync":"false", 
-        "src":"https://www.nihbuatjajan.com/javascripts/widget.prod.min.js?u=adekabang", 
-        "data-id":"adekabang", 
-        "data-domain":"https://www.nihbuatjajan.com", 
-        "data-description":"", 
-        "data-message":"", 
-        "data-color":"#b91c1c", 
-        "data-position":"Right", 
-        "data-X_margin":"18", 
-        "data-Y_margin":"18"}
-
-    ],
-    
+      { src: 'https://beacon.8labs.id/js/script.js', defer: true, 'data-domain': 'docs.8labs.id' },
+    ]
 };
 
 export default config;
