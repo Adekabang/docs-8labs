@@ -172,17 +172,11 @@ Do this step for all the worker node, in this scenario will be `kube-worker-1` a
     
     ![Get Nodes Information using kubectl](06-get-node-information-using-kubectl.png)
     
-
-<aside>
-⚠️
-
-If you stuck in when starting k3s-agent. Make sure worker node and master node can be connecting. it could be firewall, proxy server, or incorrect/mismatched MTU. Script below can be use for check the connectivity.
-
-```bash
-curl -ks https://ipaddress:6443/ping
-```
-
-</aside>
+> ⚠️ If you stuck in when starting k3s-agent. Make sure worker node and master node can be connecting. it could be firewall, proxy server, or incorrect/mismatched MTU. Script below can be use for check the connectivity.
+> 
+> ```bash
+> curl -ks https://ipaddress:6443/ping
+> ```
 
 # Install and Configure services in the Master Node
 
@@ -206,12 +200,12 @@ because we disable some service in the master node. Now we are going to install 
     helm version
     ```
     
-    ![image.png](07-image.png)
+    ![Check Helm Version](07-check-helm-version.png)
     
 
 ## MetalLB - Load Balancer Installation and Configuration
 
-![image.png](08-image.png)
+![Load Balancer Diagram](08-load-balancer-diagram.png)
 
 ### **Services**
 
@@ -242,7 +236,7 @@ because we disable some service in the master node. Now we are going to install 
     helm search repo metallb
     ```
     
-    ![image.png](09-image.png)
+    ![Search MetalLB in Helm](09-search-metallb-in-helm.png)
     
 4. Pull the metallb from the repository, it will download tgz file.
     
@@ -280,7 +274,7 @@ because we disable some service in the master node. Now we are going to install 
     kubectl -n metallb-system get pod -w
     ```
     
-    ![image.png](01-image0.png)
+    ![Get All using kubectl](10-get-all-using-kubectl.png)
     
 
 ### Configuration
@@ -304,7 +298,7 @@ because we disable some service in the master node. Now we are going to install 
     kubectl apply -f ipaddresspool.yaml
     ```
     
-    ![image.png](01-image1.png)
+    ![Apply IP Address Pool using kubectl](11-apply-ip-address-pool-using-kubectl.png)
     
 3. Then, we define the L2 Advertisement config on `l2advertisement.yaml`
     
@@ -325,7 +319,7 @@ because we disable some service in the master node. Now we are going to install 
     kubectl apply -f l2advertisement.yaml
     ```
     
-    ![image.png](01-image2.png)
+    ![Apply L2 Advertisement using kubectl](12-apply-l2-advertisement-using-kubectl.png)
     
 
 ### Test the Load Balancer
@@ -348,16 +342,16 @@ because we disable some service in the master node. Now we are going to install 
     kubectl get all
     ```
     
-    ![image.png](01-image3.png)
+    ![Get All using kubectl](13-get-all-using-kubectl.png)
     
 3. You can access the app using `EXTERNAL-IP` of `service/app-demo-1` and Nginx landing page will show up.
     
-    ![image.png](01-image4.png)
+    ![Access External IP](14-access-external-ip.png)
     
 
 ## Nginx - Ingress Controller Installation and Configuration
 
-![image.png](01-image5.png)
+![Ingress Diagram](15-ingress-diagram.png)
 
 ### Installation Step by Step:
 
@@ -416,11 +410,11 @@ because we disable some service in the master node. Now we are going to install 
     kubectl -n ingress get all
     ```
     
-    ![image.png](01-image6.png)
+    ![Get All Ingress using kubectl](16-get-all-ingress-using-kubectl.png)
     
 8. The `EXTERNAL-IP` is available and reachable, but since no resources use it, it display 404
     
-    ![image.png](01-image7.png)
+    ![Access External IP but Not Found](17-access-external-ip-but-not-found.png)
     
 
 ### Testing the Ingress
@@ -484,15 +478,15 @@ because we disable some service in the master node. Now we are going to install 
     kubectl -n demo get ingress
     ```
     
-    ![image.png](01-image8.png)
+    ![Get All and Ingress using kubectl](18-get-all-and-ingress-using-kubectl.png)
     
 8. If you configure the FQDN in DNS or /etc/hosts correctly to ingress IP address, it will show like this
     
-    ![image.png](01-image9.png)
+    ![Access using FQDN](19-access-using-fqdn.png)
     
 
 ## CEPH CSI - StorageClass Installation and Configuration
 
-![image.png](02-image0.png)
+![StorageClass Diagram](20-storageclass-diagram.png)
 
 **TODO** - i don't have CEPH cluster yet 🙈
