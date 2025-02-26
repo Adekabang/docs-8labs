@@ -180,7 +180,7 @@ Do this step for all the worker node, in this scenario will be `kube-worker-1` a
 
 # Install and Configure services in the Master Node
 
-because we disable some service in the master node. Now we are going to install it the replacement services.
+Because we disable some service in the master node. Now we are going to install it the replacement services.
 
 ## HELM - Package Manager Installation
 
@@ -207,7 +207,7 @@ because we disable some service in the master node. Now we are going to install 
 
 ![Load Balancer Diagram](08-load-balancer-diagram.png)
 
-### **Services**
+### Services
 
 - As default, all resources in Kubernetes are isolated, specifically pods.
 - Pods are isolated by default. To enable communication between pods or with the external network, you need to configure  Services.
@@ -216,7 +216,7 @@ because we disable some service in the master node. Now we are going to install 
     - NodePort (Port 30000-32767) → NodePort services expose a port on each node in the cluster, allowing external access. The port range 30000-32767 is the default range.
     - LoadBalancer → LoadBalancer services provision an external load balancer that distributes traffic to multiple pods.
 
-### Installation Step by Step:
+### Installation Step by Step
 
 1. Add metallb repository to helm
     
@@ -353,7 +353,7 @@ because we disable some service in the master node. Now we are going to install 
 
 ![Ingress Diagram](15-ingress-diagram.png)
 
-### Installation Step by Step:
+### Installation Step by Step
 
 1. Add nginx repository to helm
     
