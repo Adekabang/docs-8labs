@@ -13,17 +13,14 @@ Last Update: 25 February 2025
 
 ### Resources
 
-https://docs.k3s.io/quick-start
-
-https://www.youtube.com/watch?v=w7qoTksCQow
-
-https://metallb.io/installation/#installation-with-helm
-
-https://helm.sh/docs/intro/install/#from-apt-debianubuntu
+- [Quick Start K3S](https://docs.k3s.io/quick-start)
+- [K3S: Setup dan Konfigurasi Kubernetes Cluster](https://www.youtube.com/watch?v=w7qoTksCQow)
+- [MetalLB: Installation with Helm](https://metallb.io/installation/#installation-with-helm)
+- [Helm: Installing from APT - Ubuntu/Debian](https://helm.sh/docs/intro/install/#from-apt-debianubuntu)
 
 # Non-HA Control Plan Setup and Configuration
 
-![image.png](image.png)
+![Non HA Control Plane Kubernetes](00-non-ha-control-plane-kubernetes.png)
 
 The implementation Scenario will be configured:
 
@@ -60,7 +57,7 @@ These three nodes will be deployed in Proxmox VE, with each specification of nod
     ```
     
 3. Reboot to finalize the upgrade and apply the hostname.
-4. Install docker with this script ([https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script](https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script))
+4. Install docker with this script ([Docker: Install using the conveniencescript](https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script))
     
     ```bash
     curl -fsSL https://get.docker.com -o get-docker.sh
@@ -74,7 +71,7 @@ These three nodes will be deployed in Proxmox VE, with each specification of nod
     docker version
     ```
     
-    ![image.png](image%201.png)
+    ![Check Docker Version](01-check-docker-version.png)
     
 
 ## Master Node Setup
@@ -96,7 +93,7 @@ These three nodes will be deployed in Proxmox VE, with each specification of nod
     curl -sfL https://get.k3s.io | sh -s - server --disable traefik --disable servicelb --disable local-storage --docker
     ```
     
-    ![image.png](image%202.png)
+    ![K3S Installation](02-k3s-installation.png)
     
 3. Check the service status, make sure it is active
     
@@ -104,7 +101,7 @@ These three nodes will be deployed in Proxmox VE, with each specification of nod
     systemctl status k3s.service
     ```
     
-    ![image.png](image%203.png)
+    ![K3S Master Node Status](03-k3s-master-node-status.png)
     
 4. Check kubectl command. It will display 1 node only (which is the master node).
     
@@ -112,27 +109,25 @@ These three nodes will be deployed in Proxmox VE, with each specification of nod
     kubectl get node
     ```
     
-    ![image.png](image%204.png)
+    ![Get Node Information using kubectl](04-get-node-information-using-kubectl.png)
     
-    <aside>
-    ⚠️
     
-    if the get error `unable to read /etc/rancher/k3s/k3s.yml` , you can fix with this step.
+    > ⚠️ if the get error `unable to read /etc/rancher/k3s/k3s.yml` , you can fix with this step.
+    > 
+    > ```bash
+    > mkdir .kube
+    > sudo cp /etc/rancher/k3s/k3s.yaml .kube/config.yaml
+    > sudo chown $USER:$GROUP .kube/config.yaml
+    > export KUBECONFIG=~/.kube/config.yaml
+    > ```
+    > 
+    > or if you have not start the installation, you can add `--write-config 644` in the end of the script, like this:
+    > 
+    > ```bash
+    > curl -sfL https://get.k3s.io | sh -s - server --disable traefik --disable servicelb --disable local-storage --docker --write-config 644
+    > ```
     
-    ```bash
-    mkdir .kube
-    sudo cp /etc/rancher/k3s/k3s.yaml .kube/config.yaml
-    sudo chown $USER:$GROUP .kube/config.yaml
-    export KUBECONFIG=~/.kube/config.yaml
-    ```
     
-    or if you have not start the installation, you can add `--write-config 644` in the end of the script, like this:
-    
-    ```bash
-    curl -sfL https://get.k3s.io | sh -s - server --disable traefik --disable servicelb --disable local-storage --docker --write-config 644
-    ```
-    
-    </aside>
     
 
 ## Worker Node Setup
@@ -171,11 +166,11 @@ Do this step for all the worker node, in this scenario will be `kube-worker-1` a
     systemctl status k3s-agent.service
     ```
     
-    ![image.png](image%205.png)
+    ![K3S Worker Node Status](05-k3s-worker-node-status.png)
     
 4. Check kubectl command in master node. Now, it will display more than 1 node (which is the includes all the installed worker nodes).
     
-    ![image.png](image%206.png)
+    ![image.png](06-image.png)
     
 
 <aside>
@@ -211,12 +206,12 @@ because we disable some service in the master node. Now we are going to install 
     helm version
     ```
     
-    ![image.png](image%207.png)
+    ![image.png](07-image.png)
     
 
 ## MetalLB - Load Balancer Installation and Configuration
 
-![image.png](image%208.png)
+![image.png](08-image.png)
 
 ### **Services**
 
@@ -247,7 +242,7 @@ because we disable some service in the master node. Now we are going to install 
     helm search repo metallb
     ```
     
-    ![image.png](image%209.png)
+    ![image.png](09-image.png)
     
 4. Pull the metallb from the repository, it will download tgz file.
     
@@ -285,7 +280,7 @@ because we disable some service in the master node. Now we are going to install 
     kubectl -n metallb-system get pod -w
     ```
     
-    ![image.png](image%2010.png)
+    ![image.png](01-image0.png)
     
 
 ### Configuration
@@ -309,7 +304,7 @@ because we disable some service in the master node. Now we are going to install 
     kubectl apply -f ipaddresspool.yaml
     ```
     
-    ![image.png](image%2011.png)
+    ![image.png](01-image1.png)
     
 3. Then, we define the L2 Advertisement config on `l2advertisement.yaml`
     
@@ -330,7 +325,7 @@ because we disable some service in the master node. Now we are going to install 
     kubectl apply -f l2advertisement.yaml
     ```
     
-    ![image.png](image%2012.png)
+    ![image.png](01-image2.png)
     
 
 ### Test the Load Balancer
@@ -353,16 +348,16 @@ because we disable some service in the master node. Now we are going to install 
     kubectl get all
     ```
     
-    ![image.png](image%2013.png)
+    ![image.png](01-image3.png)
     
 3. You can access the app using `EXTERNAL-IP` of `service/app-demo-1` and Nginx landing page will show up.
     
-    ![image.png](image%2014.png)
+    ![image.png](01-image4.png)
     
 
 ## Nginx - Ingress Controller Installation and Configuration
 
-![image.png](image%2015.png)
+![image.png](01-image5.png)
 
 ### Installation Step by Step:
 
@@ -421,11 +416,11 @@ because we disable some service in the master node. Now we are going to install 
     kubectl -n ingress get all
     ```
     
-    ![image.png](image%2016.png)
+    ![image.png](01-image6.png)
     
 8. The `EXTERNAL-IP` is available and reachable, but since no resources use it, it display 404
     
-    ![image.png](image%2017.png)
+    ![image.png](01-image7.png)
     
 
 ### Testing the Ingress
@@ -489,15 +484,15 @@ because we disable some service in the master node. Now we are going to install 
     kubectl -n demo get ingress
     ```
     
-    ![image.png](image%2018.png)
+    ![image.png](01-image8.png)
     
 8. If you configure the FQDN in DNS or /etc/hosts correctly to ingress IP address, it will show like this
     
-    ![image.png](image%2019.png)
+    ![image.png](01-image9.png)
     
 
 ## CEPH CSI - StorageClass Installation and Configuration
 
-![image.png](image%2020.png)
+![image.png](02-image0.png)
 
-TODO - i dont have CEPH cluster yet🙈
+**TODO** - i don't have CEPH cluster yet 🙈
