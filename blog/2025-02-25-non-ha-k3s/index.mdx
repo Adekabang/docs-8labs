@@ -140,16 +140,12 @@ Do this step for all the worker node, in this scenario will be `kube-worker-1` a
     export K3S_TOKEN=kubernetesdemo123
     ```
     
-    <aside>
-    ⚠️
+    > ⚠️ If you forget the token on the master node, you can check and on the master node on this file. Copy all the string.
+    > 
+    > ```bash
+    > cat /var/lib/rancher/k3s/server/node-token
+    > ```
     
-    If you forget the token on the master node, you can check and on the master node on this file. Copy all the string.
-    
-    ```bash
-    cat /var/lib/rancher/k3s/server/node-token
-    ```
-    
-    </aside>
     
 2. The installation of worker nodes, using this script:
     1. install the server as worker node (agent)
@@ -170,7 +166,11 @@ Do this step for all the worker node, in this scenario will be `kube-worker-1` a
     
 4. Check kubectl command in master node. Now, it will display more than 1 node (which is the includes all the installed worker nodes).
     
-    ![image.png](06-image.png)
+    ```bash
+    kubectl get node
+    ```
+    
+    ![Get Nodes Information using kubectl](06-get-node-information-using-kubectl.png)
     
 
 <aside>
