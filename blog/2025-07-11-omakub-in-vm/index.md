@@ -78,6 +78,8 @@ wget -qO- https://omakub.org/install | bash
 
 Follow the on-screen prompts to select your preferred options. The installation will take some time and will eventually request a reboot.
 
+![Terminal Landing Page](00-home.png)
+
 ### Post-Omakub Installation & Troubleshooting
 
 After Omakub is installed and your VM has rebooted, try to connect again via RDP.
@@ -106,6 +108,8 @@ After Omakub is installed and your VM has rebooted, try to connect again via RDP
 
 A common issue when using Remote Desktop from macOS to a Linux VM (especially with Omakub) is that macOS's system-level shortcuts can conflict with the VM's shortcuts, particularly those involving the `Super` key (Cmd key on Mac). For example, `Super+Space` often triggers Spotlight on macOS instead of Omakub's application launcher.
 
+![Shortcut Settings](02-shortcut.png)
+
 To resolve this, you can adjust the hotkeys within Omakub to avoid conflicts:
 
 *   **Ulauncher ("Type app to launch"):**
@@ -126,6 +130,8 @@ By changing these keybindings in Omakub, you allow macOS to retain its system-le
 ### Conclusion
 
 You've now successfully installed Omakub on an Ubuntu 24.04 virtual machine within Proxmox! This setup provides a powerful and isolated environment for your jumphost and remote development needs, all while leveraging your existing homelab infrastructure. Enjoy your clean main PC and your new Omakub workspace!
+
+![Omakub Theme](01-theme.png)
 
 ### References
 
