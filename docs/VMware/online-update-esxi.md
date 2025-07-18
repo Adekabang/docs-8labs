@@ -185,3 +185,5 @@ This guide details how to update the ESXi version using the command-line interfa
 
 -   [Updating VMware ESXi Host from the Command Line (ESXCLI)](https://woshub.com/update-vmware-esxi/)
 -   [Quick Tip - Using ESXCLI to upgrade ESXi 8.x throws MemoryError or Got no data from process](https://williamlam.com/2024/03/quick-tip-using-esxcli-to-upgrade-esxi-8-x-throws-memoryerror-or-got-no-data-from-process.html)
+-   [https://thenicholson.com/updating-esxi-using-esxcli-broadcom-tokens/](https://thenicholson.com/updating-esxi-using-esxcli-broadcom-tokens/)
+-   [https://knowledge.broadcom.com/external/article/343840/patching-esxi-host-using-command-line.html](https://knowledge.broadcom.com/external/article/343840/patching-esxi-host-using-command-line.html)
