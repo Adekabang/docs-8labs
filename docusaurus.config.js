@@ -150,7 +150,7 @@ const config = {
     }),
     plugins:[tailwindPlugin],
     scripts: [
-      { src: 'https://beacon.8labs.id/js/script.js', defer: true, 'data-domain': 'docs.8labs.id' },
+      { src: 'https://beacon.8labs.id/script.js', defer: true, 'data-website-id': '57890745-9236-46f9-965f-2deb733d445a'},
     ]
 };
 
