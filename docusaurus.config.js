@@ -46,6 +46,9 @@ const config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/Adekabang/selfdocu/tree/main',
+          // Display last update author and time in doc pages
+          showLastUpdateAuthor: true,
+          showLastUpdateTime: true,
         },
         blog: {
           showReadingTime: true,
