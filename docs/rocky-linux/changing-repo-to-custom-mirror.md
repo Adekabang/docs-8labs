@@ -5,8 +5,9 @@ sidebar_position: 1
 
 # Changing Rocky Linux Repository to a Custom Mirror
 
-> ⚠️🚨 IMPORTANT 🚨⚠️
-> This guide involves modifying core system package management files. **A misconfiguration can prevent your system from installing or updating software.** While not as immediately locking as a firewall, a broken DNF can significantly impact your server's functionality. Proceed with caution and ensure you have a way to manually edit files if `dnf` becomes unresponsive.
+:::warning IMPORTANT
+This guide involves modifying core system package management files. **A misconfiguration can prevent your system from installing or updating software.** While not as immediately locking as a firewall, a broken DNF can significantly impact your server's functionality. Proceed with caution and ensure you have a way to manually edit files if `dnf` becomes unresponsive.
+:::
 
 ## Core Principle
 
