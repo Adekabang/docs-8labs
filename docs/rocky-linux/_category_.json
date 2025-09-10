@@ -1,5 +1,8 @@
 {
-  "label": "Rocky Linux",
+  "label": "Tutorial - Rocky Linux",
   "position": 7,
-  "collapsed": false
+  "link": {
+    "type": "generated-index",
+    "description": "Any Random Rocky Linux tips and trick"
+  }
 }
