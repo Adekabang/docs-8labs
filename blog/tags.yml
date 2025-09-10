@@ -76,3 +76,17 @@ kubernetes:
   label: Kubernetes
   permalink: /kubernetes
   description: Kubernetes guides and notes
+
+# Welcome post tags
+8labs:
+  label: 8Labs
+  permalink: /8labs
+  description: Posts about the 8Labs platform
+welcome:
+  label: Welcome
+  permalink: /welcome
+  description: Site introductions and welcome notes
+announcement:
+  label: Announcement
+  permalink: /announcement
+  description: News and updates
