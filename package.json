@@ -44,5 +44,14 @@
   "engines": {
     "node": ">=18.0"
   },
+  "resolutions": {
+  "**/http-proxy-middleware": "2.0.9",
+  "**/on-headers": "1.1.0",
+  "**/brace-expansion@1": "1.1.12",
+  "**/brace-expansion@^1": "1.1.12",
+  "**/brace-expansion@2": "2.0.2",
+  "**/brace-expansion@^2": "2.0.2",
+  "**/webpack-dev-server": "^5.2.2"
+  },
   "packageManager": "yarn@1.22.22"
 }
