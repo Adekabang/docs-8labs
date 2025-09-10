@@ -22,3 +22,57 @@ docusaurus:
   label: Docusaurus
   permalink: /docusaurus
   description: All about Docusaurus
+
+# Added to satisfy blog post tag usage
+omakub:
+  label: Omakub
+  permalink: /omakub
+  description: Posts about Omakub setup and usage
+ubuntu:
+  label: Ubuntu
+  permalink: /ubuntu
+  description: Posts related to Ubuntu Linux
+proxmox:
+  label: Proxmox
+  permalink: /proxmox
+  description: Posts about Proxmox VE virtualization
+virtualization:
+  label: Virtualization
+  permalink: /virtualization
+  description: Virtualization topics and tools
+homelab:
+  label: Homelab
+  permalink: /homelab
+  description: Homelab builds and experiences
+remote-desktop:
+  label: Remote Desktop
+  permalink: /remote-desktop
+  description: RDP and remote desktop tooling
+jumphost:
+  label: Jumphost
+  permalink: /jumphost
+  description: Bastion hosts and jump servers
+qemu:
+  label: QEMU
+  permalink: /qemu
+  description: QEMU virtualization tips and guides
+virt-manager:
+  label: Virt-Manager
+  permalink: /virt-manager
+  description: Managing VMs with virt-manager
+macos:
+  label: macOS
+  permalink: /macos
+  description: macOS related topics
+k8s:
+  label: K8s
+  permalink: /k8s
+  description: Kubernetes shorthand topics
+k3s:
+  label: K3s
+  permalink: /k3s
+  description: Lightweight Kubernetes (K3s)
+kubernetes:
+  label: Kubernetes
+  permalink: /kubernetes
+  description: Kubernetes guides and notes

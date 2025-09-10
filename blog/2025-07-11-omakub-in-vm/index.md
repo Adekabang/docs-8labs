@@ -11,6 +11,8 @@ I recently found myself in a common homelab dilemma: I needed a dedicated machin
 
 Omakub, based on Ubuntu, provides a clean and efficient workspace, perfect for keeping my main PC clutter-free while still having a powerful Linux environment at my fingertips. This guide will walk you through setting up a fresh Ubuntu 24.04 VM in Proxmox and then installing Omakub.
 
+<!-- truncate -->
+
 ### VM Specification
 
 For this setup, I allocated the following resources to my Proxmox VM:
