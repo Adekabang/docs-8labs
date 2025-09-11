@@ -164,7 +164,8 @@ vi /etc/sysconfig/iptables
 
 # Jump to custom chains for INPUT and FORWARD processing
 -A INPUT -j xapi-INPUT
--A INPUT -p gre -j ACCEPT  # Allow GRE protocol, if used by your provider/network setup
+# Allow GRE protocol, if used by your provider/network setup
+# -A INPUT -p gre -j ACCEPT  
 -A INPUT -j RH-Firewall-1-INPUT
 -A FORWARD -j RH-Firewall-1-INPUT
 
@@ -207,7 +208,9 @@ vi /etc/sysconfig/iptables
 # Only allow if you know they are required for your setup, and from your OPNsense WAN IP.
 -A xapi-INPUT -s YOUR_FIREWALL_WAN_IP/32 -p tcp -m conntrack --ctstate NEW -m tcp --dport 6653 -j ACCEPT
 -A xapi-INPUT -s YOUR_FIREWALL_WAN_IP/32 -p tcp -m conntrack --ctstate NEW -m tcp --dport 6640 -j ACCEPT
--A xapi-INPUT -j RETURN # Return to the calling chain (INPUT)
+
+# Return to the calling chain (INPUT)
+-A xapi-INPUT -j RETURN 
 
 # --- DEFAULT DENY (for RH-Firewall-1-INPUT chain) ---
 # Reject all other incoming traffic not explicitly allowed above, sending an ICMP error.
