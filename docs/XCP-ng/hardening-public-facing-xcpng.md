@@ -5,8 +5,8 @@ sidebar_position: 1
 
 # Hardening Public-Facing XCP-ng with OPNsense & WireGuard
 
-:::warning NOT TESTED YET
-This tutorial has not been tested in any XCP-ng version. Please proceed carefully, as it is not production-ready.
+:::warning NOT FOR PRODUCTION
+This tutorial has been tested in XCP-ng version 8.2 only. Please proceed carefully, as it is not production-ready.
 :::
 
 This guide outlines a robust method for securing a public-facing XCP-ng hypervisor by routing all management traffic through a WireGuard VPN tunnel on an OPNsense firewall VM. This minimizes the attack surface on the XCP-ng host itself.
