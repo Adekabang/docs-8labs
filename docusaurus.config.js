@@ -154,7 +154,40 @@ const config = {
         additionalLanguages: ['bash'],
       },
     }),
-    plugins:[tailwindPlugin],
+    plugins:[
+    tailwindPlugin,
+    [
+      require.resolve("@cmfcmf/docusaurus-search-local"),
+      {
+        // whether to index docs pages
+        indexDocs: true,
+        // whether to index blog pages  
+        indexBlog: true,
+        // whether to index static pages
+        indexPages: false,
+        // language of your documentation
+        language: "en",
+        // style of the search bar
+        style: undefined,
+        // maximum number of search results shown
+        maxSearchResults: 8,
+        // lunr.js-specific options
+        lunr: {
+          // tokenizer separator
+          tokenizerSeparator: /[\s\-]+/,
+          // whether to include matches on stop words
+          b: 0.75,
+          // boost factor for document titles
+          k1: 1.2,
+          // whether to boost fields
+          titleBoost: 5,
+          contentBoost: 1,
+          tagsBoost: 3,
+          parentCategoriesBoost: 2,
+        },
+      },
+    ],
+  ],
     scripts: [
       { src: 'https://beacon.8labs.id/script.js', defer: true, 'data-website-id': '57890745-9236-46f9-965f-2deb733d445a'},
     ]

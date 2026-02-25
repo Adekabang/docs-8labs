@@ -1,6 +1,6 @@
 {
   "label": "Proxmox",
-  "position": 5,
+  "position": 4,
   "link": {
     "type": "generated-index",
     "description": "Proxmox VE tutorials and troubleshooting"

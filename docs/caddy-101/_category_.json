@@ -1,6 +1,6 @@
 {
   "label": "Caddy",
-  "position": 3,
+  "position": 2,
   "link": {
     "type": "generated-index",
     "description": "How to use, configure and deploy Caddy as a web server"
