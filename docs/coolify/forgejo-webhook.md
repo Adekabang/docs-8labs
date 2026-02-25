@@ -45,12 +45,12 @@ For secure webhook authentication between Forgejo and Coolify, configure a Beare
 
 ### Generating Coolify API Key
 
-1. Open your Coolify dashboard
-2. Navigate to your profile or team settings
-3. Go to **Settings** → **API Keys** (or **Personal Access Tokens**)
-4. Click **Generate New Token** or **Create API Key**
-5. Give it a descriptive name (e.g., "Forgejo Webhook")
-6. Copy the generated token immediately (it won't be shown again)
+1. In Coolify, navigate to **"Keys & Tokens"**
+2. Go to **"API Tokens"**
+3. Click **"New Token"**
+4. Fill in the **Description**
+5. Check the permissions: **"deploy"** and **"read"**
+6. Copy the generated token
 
 :::tip
 Store this token securely. You'll need it for the next step.
