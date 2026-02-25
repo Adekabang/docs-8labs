@@ -7,6 +7,9 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import tailwindPlugin from "./plugins/tailwind-config.cjs"; // add this
 
+// Environment-based config for containerized builds
+const showLastUpdate = process.env.DOCS_SHOW_LAST_UPDATE !== 'false';
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Cloud Environment',
@@ -46,9 +49,9 @@ const config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/Adekabang/selfdocu/tree/main',
-          // Display last update author and time in doc pages
-          showLastUpdateAuthor: true,
-          showLastUpdateTime: true,
+          // Environment-based: set DOCS_SHOW_LAST_UPDATE=false for builds without git
+          showLastUpdateAuthor: showLastUpdate,
+          showLastUpdateTime: showLastUpdate,
         },
         blog: {
           showReadingTime: true,
