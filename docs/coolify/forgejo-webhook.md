@@ -39,7 +39,47 @@ This guide configures Forgejo webhooks to trigger Coolify deployments automatica
 
 5. Click **Add Webhook**
 
-## Step 3: The Critical Fix - Allowed Host List
+## Step 3: Secure Your Webhook with API Key (Recommended)
+
+For secure webhook authentication between Forgejo and Coolify, configure a Bearer token. This prevents unauthorized webhook triggers.
+
+### Generating Coolify API Key
+
+1. Open your Coolify dashboard
+2. Navigate to your profile or team settings
+3. Go to **Settings** → **API Keys** (or **Personal Access Tokens**)
+4. Click **Generate New Token** or **Create API Key**
+5. Give it a descriptive name (e.g., "Forgejo Webhook")
+6. Copy the generated token immediately (it won't be shown again)
+
+:::tip
+Store this token securely. You'll need it for the next step.
+:::
+
+### Configuring Forgejo Webhook with Bearer Token
+
+1. In Forgejo, go to your repository → **Settings** → **Webhooks**
+2. Find your Coolify webhook and click **Edit**
+3. Locate the **Authorization Header** or **Secret** field
+4. Enter the Bearer token in this exact format:
+   ```
+   Bearer <your-coolify-api-key>
+   ```
+   Replace `<your-coolify-api-key>` with the actual token you copied from Coolify
+5. Save the webhook
+
+### Security Benefits
+
+- **Prevents unauthorized webhook triggers**: Without authentication, anyone who discovers your webhook URL could trigger deployments
+- **Ensures only Forgejo can trigger deployments**: Coolify validates the Bearer token on every webhook request
+- **Audit trail**: You can trace which webhook triggered each deployment
+- **Token rotation**: If needed, you can revoke/regenerate the API key without changing the webhook URL
+
+:::warning
+Without API key authentication, your webhook URL is essentially an open endpoint. Anyone with the URL could trigger deployments, potentially disrupting your production environment.
+:::
+
+## Step 4: The Critical Fix - Allowed Host List
 
 By default, Forgejo blocks webhooks to private/internal IP addresses for security. This prevents Coolify webhooks from working if Coolify is on a private network.
 
@@ -81,7 +121,7 @@ The `ALLOWED_HOST_LIST` tells Forgejo which destinations are safe for webhooks:
 - `192.168.0.0/16` - Private Class C network
 - Add your Coolify domain if using public DNS
 
-## Step 4: Test the Webhook
+## Step 5: Test the Webhook
 
 ### Test Delivery in Forgejo
 
@@ -105,7 +145,7 @@ The `ALLOWED_HOST_LIST` tells Forgejo which destinations are safe for webhooks:
 ### "not allowed to dial" Error
 
 **Cause**: Forgejo's security settings block private IPs  
-**Fix**: Add `FORGEJO__WEBHOOK__ALLOWED_HOST_LIST` (see Step 3)
+**Fix**: Add `FORGEJO__WEBHOOK__ALLOWED_HOST_LIST` (see Step 4)
 
 ### "404 Not Found" or "401 Unauthorized"
 
