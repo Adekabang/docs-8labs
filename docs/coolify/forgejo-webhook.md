@@ -22,8 +22,9 @@ This guide configures Forgejo webhooks to trigger Coolify deployments automatica
 2. Navigate to your **Resource** (application)
 3. Go to **Settings** → **Webhooks**
 4. Copy the **Deploy Webhook URL**
-   - Format: `https://coolify.yourdomain.com/webhooks/forgejo/xxxxx`
-   - Or: `http://10.x.x.x:8000/webhooks/source/xxxxx` (for internal IPs)
+   - Format: `https://coolify.yourdomain.com/api/v1/deploy?uuid=p4040gok480cc8ocg0ws4cog&force=false`
+5. Change the **force** variable to `true`
+   - Format: `https://coolify.yourdomain.com/api/v1/deploy?uuid=p4040gok480cc8ocg0ws4cog&force=true`
 
 ## Step 2: Configure Forgejo Webhook
 
@@ -60,7 +61,7 @@ Store this token securely. You'll need it for the next step.
 
 1. In Forgejo, go to your repository → **Settings** → **Webhooks**
 2. Find your Coolify webhook and click **Edit**
-3. Locate the **Authorization Header** or **Secret** field
+3. Locate the **Authorization Header** field
 4. Enter the Bearer token in this exact format:
    ```
    Bearer <your-coolify-api-key>
