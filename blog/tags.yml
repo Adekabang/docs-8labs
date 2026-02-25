@@ -90,3 +90,29 @@ announcement:
   label: Announcement
   permalink: /announcement
   description: News and updates
+
+# Security and hardening tags
+security:
+  label: Security
+  permalink: /security
+  description: Security guides and best practices
+hardening:
+  label: Hardening
+  permalink: /hardening
+  description: System and server hardening guides
+ssh:
+  label: SSH
+  permalink: /ssh
+  description: SSH configuration and security
+firewall:
+  label: Firewall
+  permalink: /firewall
+  description: Firewall configuration and management
+server:
+  label: Server
+  permalink: /server
+  description: Server administration and management
+linux:
+  label: Linux
+  permalink: /linux
+  description: Linux system administration
