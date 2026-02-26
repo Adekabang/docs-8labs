@@ -1,9 +1,8 @@
 {
-    "label": "Tutorial - Wireguard",
-    "position": 8,
-    "link": {
-      "type": "generated-index",
-      "description": "Any Random Wireguard tips and trick"
-    }
+  "label": "WireGuard",
+  "position": 7,
+  "link": {
+    "type": "generated-index",
+    "description": "WireGuard VPN setup and configuration"
   }
-  
+}
