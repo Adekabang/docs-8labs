@@ -45,10 +45,10 @@
     "node": ">=18.0"
   },
   "overrides": {
-    "minimatch": "10.0.3",
+    "minimatch": "10.2.3",
     "serialize-javascript": "7.0.4",
     "serve-handler": {
-      "minimatch": "10.0.3"
+      "minimatch": "10.2.3"
     }
   },
   "packageManager": "yarn@1.22.22"
