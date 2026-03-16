@@ -5,8 +5,6 @@
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
 import {themes as prismThemes} from 'prism-react-renderer';
-import tailwindPlugin from "./plugins/tailwind-config.cjs"; // add this
-
 // Environment-based config for containerized builds
 const showLastUpdate = process.env.DOCS_SHOW_LAST_UPDATE !== 'false';
 
@@ -28,7 +26,11 @@ const config = {
   projectName: 'docs-8labs', // Usually your repo name.
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
+  },
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -154,7 +156,6 @@ const config = {
         additionalLanguages: ['bash'],
       },
     }),
-    plugins:[tailwindPlugin],
     scripts: [
       { src: 'https://beacon.8labs.id/script.js', defer: true, 'data-website-id': '57890745-9236-46f9-965f-2deb733d445a'},
     ]
