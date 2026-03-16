@@ -70,6 +70,14 @@ brew install ripgrep ast-grep
 
 If you regularly use exploration-heavy agent workflows, these tools are worth having installed.
 
+### Add RTK for token-efficient Bash outputs
+
+If your sessions are command-heavy, consider adding RTK:
+
+- [Use RTK to reduce token usage](/docs/opencode/rtk-guide)
+
+RTK can rewrite common Bash commands to compact `rtk ...` equivalents so less noisy output is sent into model context.
+
 ## 5. Optional additions
 
 If you need more workflow power, consider these layers:

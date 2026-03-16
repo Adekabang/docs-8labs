@@ -24,6 +24,7 @@ The setup described here does **not** assume CLIProxyAPI is the only provider pa
 - [Use planner strategy to save tokens](/docs/opencode/planner-strategy)
 - [Reference: OpenCode agent modes](/docs/opencode/agent-modes)
 - [Tutorial: Image to code workflow](/docs/opencode/image-to-code)
+- [Use RTK to reduce token usage](/docs/opencode/rtk-guide)
 - [Reference: Superpowers skills catalog](/docs/opencode/skills-catalog)
 - [Guide: When to use Impeccable](/docs/opencode/impeccable-guide)
 - [Launch OpenCode and use model variants](/docs/opencode/launch-and-model-reference)

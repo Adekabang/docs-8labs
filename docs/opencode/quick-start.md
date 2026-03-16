@@ -31,6 +31,7 @@ Add these next:
 - [Configure MCP tools](/docs/opencode/mcp-guide)
 - [Automate project workflow with AGENTS.md](/docs/opencode/project-rules)
 - [Create custom local skills](/docs/opencode/skills-integration)
+- [Use RTK to reduce token usage](/docs/opencode/rtk-guide)
 
 ## Step 3: Launch and work
 
