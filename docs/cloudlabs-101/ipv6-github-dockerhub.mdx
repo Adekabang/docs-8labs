@@ -1,25 +1,25 @@
 ---
-title: Akses GitHub & Docker Hub dari IPv6-only VPS
+title: Access GitHub & Docker Hub from IPv6-only VPS
 sidebar_position: 3
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Akses GitHub & Docker Hub dari IPv6-only VPS
+# Access GitHub & Docker Hub from IPv6-only VPS
 
-VirtualLabs dan beberapa VPS IPv6-only tidak bisa langsung mengakses layanan yang masih IPv4-only seperti **GitHub** dan **Docker Hub**. Tutorial ini memberikan solusi praktis agar kamu tetap bisa `git clone`, `git push`, `docker pull`, dan `docker login` dari VPS yang cuma punya alamat IPv6.
+VirtualLabs and some IPv6-only VPS instances can't directly reach services that are still IPv4-only, such as **GitHub** and **Docker Hub**. This tutorial provides practical solutions so you can still `git clone`, `git push`, `docker pull`, and `docker login` from a VPS that only has an IPv6 address.
 
-## Masalah
+## The Problem
 
-Saat kamu menjalankan:
+When you run:
 
 ```bash
 git clone https://github.com/user/repo.git
-# atau
+# or
 docker pull nginx:latest
 ```
 
-Kamu mungkin dapat error seperti:
+You might get errors like:
 
 ```
 fatal: unable to access 'https://github.com/...': Could not resolve host: github.com
@@ -29,15 +29,15 @@ fatal: unable to access 'https://github.com/...': Could not resolve host: github
 Error response from daemon: Get https://registry-1.docker.io/v2/: dial tcp: lookup registry-1.docker.io: no such host
 ```
 
-Ini terjadi karena **GitHub**, **Docker Hub**, dan banyak layanan developer belum mendukung koneksi IPv6 langsung (per Juni 2026). VPS-mu hanya punya koneksi IPv6, jadi DNS resolve-nya gagal.
+This happens because **GitHub**, **Docker Hub**, and many developer services still don't support direct IPv6 connections (as of June 2026). Your VPS only has IPv6 connectivity, so DNS resolution fails.
 
-## Solusi 1: GitHub via IPv6 Proxy (/etc/hosts)
+## Solution 1: GitHub via IPv6 Proxy (/etc/hosts)
 
-Kita bisa mengarahkan traffic ke GitHub melalui **IPv6 proxy** — server yang menerima koneksi IPv6 dan meneruskannya ke GitHub via IPv4. Caranya: tambahkan mapping di `/etc/hosts`.
+You can route traffic to GitHub through an **IPv6 proxy** — a server that accepts IPv6 connections and forwards them to GitHub over IPv4. The method: add mappings to `/etc/hosts`.
 
-### Opsi A: TransIP GitHub IPv6 Proxy
+### Option A: TransIP GitHub IPv6 Proxy
 
-Cocok untuk VPS di TransIP / SandboxVPS.
+Best for VPS instances on TransIP / SandboxVPS.
 
 ```bash title="/etc/hosts"
 2a01:7c8:7c8::1337 github.com
@@ -47,9 +47,9 @@ Cocok untuk VPS di TransIP / SandboxVPS.
 2a01:7c8:7c8::1337 raw.githubusercontent.com
 ```
 
-### Opsi B: DanWin1210 Public IPv6 Proxy
+### Option B: DanWin1210 Public IPv6 Proxy
 
-Proxy publik yang bisa dipakai dari mana saja. Lebih lengkap — termasuk GitHub Packages, GHCR, dan GitHub Assets.
+A public proxy usable from anywhere. More comprehensive — includes GitHub Packages, GHCR, and GitHub Assets.
 
 ```bash title="/etc/hosts"
 # GitHub core services
@@ -67,31 +67,31 @@ Proxy publik yang bisa dipakai dari mana saja. Lebih lengkap — termasuk GitHub
 2606:50c0:8000::154 support-assets.githubassets.com github.githubassets.com opengraph.githubassets.com github-registry-files.githubusercontent.com github-cloud.githubusercontent.com
 ```
 
-### Langkah-langkah
+### Steps
 
 <Tabs>
 <TabItem value="linux" label="Linux" default>
 
-**1. Buka file `/etc/hosts`**
+**1. Open `/etc/hosts`**
 
 ```bash
 sudo nano /etc/hosts
 ```
 
-**2. Tambahkan entri proxy di akhir file**
+**2. Add proxy entries at the end of the file**
 
-Pilih salah satu opsi di atas (TransIP atau DanWin1210), lalu tempel di baris terakhir.
+Pick one of the options above (TransIP or DanWin1210) and paste at the bottom.
 
-**3. Simpan dan tes**
+**3. Save and test**
 
 ```bash
 # CTRL+X → Y → Enter (nano)
 
-# Tes koneksi
+# Test connection
 curl -I https://github.com 2>&1 | head -5
 ```
 
-**4. Tes git clone**
+**4. Test git clone**
 
 ```bash
 git clone https://github.com/Adekabang/docs-8labs.git
@@ -100,51 +100,51 @@ git clone https://github.com/Adekabang/docs-8labs.git
 </TabItem>
 <TabItem value="windows" label="Windows Server">
 
-**1. Buka Notepad sebagai Administrator**
+**1. Open Notepad as Administrator**
 
-Klik Start → ketik `Notepad` → klik kanan → **Run as Administrator**
+Click Start → type `Notepad` → right-click → **Run as Administrator**
 
-**2. Buka file hosts**
+**2. Open the hosts file**
 
-File → Open → paste `C:\Windows\System32\drivers\etc\hosts` di File name → Enter
+File → Open → paste `C:\Windows\System32\drivers\etc\hosts` in File name → Enter
 
-**3. Tambahkan entri proxy di akhir file**
+**3. Add proxy entries at the end of the file**
 
-**4. Simpan** (CTRL+S)
+**4. Save** (CTRL+S)
 
 </TabItem>
 </Tabs>
 
-### Catatan Penting
+### Important Notes
 
-- **SSH**: Proxy hanya bekerja untuk HTTPS. Untuk `git@github.com:...` (SSH), kamu tetap perlu solusi tambahan. Rekomendasi: gunakan HTTPS remote atau setup SSH proxy jump.
-- **Rate limiting**: Proxy publik mungkin kena rate limit GitHub lebih cepat. Gunakan token PAT untuk request terautentikasi.
-- **Alternatif jangka panjang**: Dorong GitHub untuk support IPv6 native. Sementara, proxy ini solusi praktis.
+- **SSH**: The proxy only works for HTTPS. For `git@github.com:...` (SSH), you still need an additional solution. Recommendation: use HTTPS remotes or set up an SSH proxy jump.
+- **Rate limiting**: Public proxies may hit GitHub's rate limit faster. Use a PAT token for authenticated requests.
+- **Long-term alternative**: Encourage GitHub to support native IPv6. In the meantime, this proxy is a practical workaround.
 
 ---
 
-## Solusi 2: Docker Hub via IPv6 Endpoint
+## Solution 2: Docker Hub via IPv6 Endpoint
 
-Docker Hub menyediakan **endpoint IPv6 beta** khusus:
+Docker Hub provides a dedicated **IPv6 beta endpoint**:
 
 ```
 registry.ipv6.docker.com
 ```
 
-### Langkah-langkah
+### Steps
 
-**1. Login ke Docker Hub via IPv6 endpoint**
+**1. Log in to Docker Hub via the IPv6 endpoint**
 
 ```bash
 docker login registry.ipv6.docker.com
 ```
 
-Masukkan username dan password Docker Hub kamu.
+Enter your Docker Hub username and password.
 
-**2. Pull image dengan prefix IPv6**
+**2. Pull images using the IPv6 prefix**
 
 ```bash
-# Official images (pakai prefix "library/")
+# Official images (use the "library/" prefix)
 docker pull registry.ipv6.docker.com/library/ubuntu:latest
 docker pull registry.ipv6.docker.com/library/nginx:latest
 docker pull registry.ipv6.docker.com/library/alpine:latest
@@ -153,7 +153,7 @@ docker pull registry.ipv6.docker.com/library/alpine:latest
 docker pull registry.ipv6.docker.com/storjlabs/watchtower:latest
 ```
 
-**3. Untuk Dockerfile, gunakan FROM dengan prefix**
+**3. In Dockerfiles, use FROM with the prefix**
 
 ```dockerfile title="Dockerfile"
 FROM registry.ipv6.docker.com/library/node:20-alpine
@@ -165,13 +165,13 @@ CMD ["node", "index.js"]
 
 :::tip
 
-**Prefix `library/`** hanya untuk official images. Untuk user images, formatnya: `registry.ipv6.docker.com/<username>/<image>:<tag>`
+The **`library/` prefix** is only for official images. For user images, the format is: `registry.ipv6.docker.com/<username>/<image>:<tag>`
 
 :::
 
-### Alternatif: Setup Docker Mirror IPv6
+### Alternative: Set Up a Docker Mirror for IPv6
 
-Kalau kamu sering build dan pull banyak image, lebih efisien setup **Docker daemon mirror**:
+If you frequently build and pull many images, it's more efficient to set up a **Docker daemon mirror**:
 
 ```json title="/etc/docker/daemon.json"
 {
@@ -179,24 +179,24 @@ Kalau kamu sering build dan pull banyak image, lebih efisien setup **Docker daem
 }
 ```
 
-Lalu restart:
+Then restart:
 
 ```bash
 sudo systemctl restart docker
 ```
 
-Dengan mirror, semua `docker pull` otomatis lewat IPv6 tanpa prefix tambahan.
+With the mirror configured, all `docker pull` commands automatically route through IPv6 without needing any extra prefix.
 
 ---
 
-## Solusi 3: NAT64 + DNS64 (Opsional)
+## Solution 3: NAT64 + DNS64 (Optional)
 
-Untuk solusi yang lebih universal (tidak hanya GitHub/Docker Hub), kamu bisa menggunakan layanan **NAT64/DNS64** publik yang menerjemahkan alamat IPv4 ke IPv6 secara otomatis.
+For a more universal solution (not limited to GitHub/Docker Hub), you can use public **NAT64/DNS64** services that automatically translate IPv4 addresses to IPv6.
 
-### Menggunakan Google's DNS64
+### Using Google's DNS64
 
 ```bash
-# Set DNS ke Google NAT64
+# Set DNS to Google NAT64
 sudo nano /etc/resolv.conf
 ```
 
@@ -205,11 +205,11 @@ nameserver 2001:4860:4860::6464
 nameserver 2001:4860:4860::64
 ```
 
-Dengan DNS64, setiap query DNS ke host IPv4-only akan otomatis di-wrap dengan prefix NAT64, sehingga VPS IPv6-mu bisa menjangkau seluruh internet IPv4.
+With DNS64, every DNS query to an IPv4-only host is automatically wrapped with a NAT64 prefix, allowing your IPv6 VPS to reach the entire IPv4 internet.
 
 :::warning
 
-NAT64 hanya bekerja untuk **koneksi keluar** (outbound). Tidak bisa dipakai untuk expose service dari VPS ke internet IPv4.
+NAT64 only works for **outbound** connections. It cannot be used to expose a service from your VPS to the IPv4 internet.
 
 :::
 
@@ -217,38 +217,38 @@ NAT64 hanya bekerja untuk **koneksi keluar** (outbound). Tidak bisa dipakai untu
 
 ## Troubleshooting
 
-| Masalah | Solusi |
-|---------|--------|
-| `git push` gagal via HTTPS | Pastikan pakai Personal Access Token (PAT), bukan password. Buat di GitHub → Settings → Developer settings → Tokens |
-| SSH `git@github.com` tetap gagal | Ubah remote ke HTTPS: `git remote set-url origin https://github.com/user/repo.git` |
-| Docker pull masih timeout | Coba `docker pull registry.ipv6.docker.com/library/<image>` langsung |
-| `curl` berhasil tapi `git` gagal | Cek `.gitconfig` — pastikan tidak ada proxy setting yang bentrok |
-| Proxy lambat / timeout | Proxy publik shared resource. Coba proxy alternatif atau NAT64 |
+| Issue | Solution |
+|-------|----------|
+| `git push` fails via HTTPS | Make sure you're using a Personal Access Token (PAT), not a password. Create one at GitHub → Settings → Developer settings → Tokens |
+| SSH `git@github.com` still fails | Switch the remote to HTTPS: `git remote set-url origin https://github.com/user/repo.git` |
+| Docker pull keeps timing out | Try `docker pull registry.ipv6.docker.com/library/<image>` directly |
+| `curl` succeeds but `git` fails | Check `.gitconfig` — make sure no proxy settings conflict |
+| Proxy is slow / times out | Public proxies are shared resources. Try an alternate proxy or NAT64 |
 
 ---
 
-## Verifikasi
+## Verification
 
-Setelah setup, pastikan semuanya berfungsi:
+After setup, confirm everything is working:
 
 ```bash
-# 1. Tes GitHub
+# 1. Test GitHub
 curl -I https://github.com 2>&1 | head -3
 
-# 2. Tes git clone
+# 2. Test git clone
 git ls-remote https://github.com/Adekabang/docs-8labs.git
 
-# 3. Tes Docker Hub
+# 3. Test Docker Hub
 docker pull registry.ipv6.docker.com/library/hello-world:latest
 docker run --rm hello-world
 ```
 
 ---
 
-## Referensi
+## References
 
-- [DanWin1210 GitHub IPv6 Proxy](https://danwin1210.de/github-ipv6-proxy.php) — Proxy publik lengkap dengan GHCR & Packages support
+- [DanWin1210 GitHub IPv6 Proxy](https://danwin1210.de/github-ipv6-proxy.php) — Public proxy with full GHCR & Packages support
 - [TransIP: Docker Hub IPv6 Support](https://www.transip.eu/knowledgebase/5290-sandboxvps-docker-hub-ipv6-support/) — `registry.ipv6.docker.com`
-- [TransIP: Using GitHub IPv6 Proxy](https://www.transip.eu/knowledgebase/5277-using-transip-github-ipv6-proxy/) — Proxy TransIP untuk VPS mereka
+- [TransIP: Using GitHub IPv6 Proxy](https://www.transip.eu/knowledgebase/5277-using-transip-github-ipv6-proxy/) — TransIP's proxy for their VPS instances
 - [Running Docker on IPv6-only Host - Ubuntu 22.04](https://g3rv4.com/2023/07/running-docker-ipv6-only-network)
 - [Docker Docs: IPv6 Beta Support](https://docs.docker.com/engine/daemon/ipv6/)
