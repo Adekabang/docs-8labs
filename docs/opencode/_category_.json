@@ -1,0 +1,8 @@
+{
+  "label": "OpenCode",
+  "position": 10,
+  "link": {
+    "type": "generated-index",
+    "description": "OpenCode setup, configuration, workflows, and troubleshooting for this docs stack"
+  }
+}

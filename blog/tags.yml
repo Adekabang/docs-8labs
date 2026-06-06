@@ -116,3 +116,16 @@ linux:
   label: Linux
   permalink: /linux
   description: Linux system administration
+
+opencode:
+  label: OpenCode
+  permalink: /opencode
+  description: OpenCode setup, workflow, and usage notes
+workflow:
+  label: Workflow
+  permalink: /workflow
+  description: Practical workflow and process stories
+docs:
+  label: Docs
+  permalink: /docs-tag
+  description: Documentation updates and writing notes
