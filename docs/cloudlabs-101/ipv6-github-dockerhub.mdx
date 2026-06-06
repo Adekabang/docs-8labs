@@ -27,17 +27,16 @@ This happens because **GitHub**, **Docker Hub**, and many developer services sti
 
 ---
 
-## Solutions
-
-<Tabs>
-<TabItem value="github" label="GitHub Proxy" default>
+## Solution 1: GitHub via IPv6 Proxy
 
 Route traffic to GitHub through an **IPv6 proxy** — a server that accepts IPv6 and forwards to GitHub over IPv4. Add mappings to `/etc/hosts`.
+
+### Choose a Proxy
 
 <Tabs>
 <TabItem value="transip" label="TransIP" default>
 
-Best for VPS instances on TransIP / SandboxVPS.
+Best for VPS on TransIP / SandboxVPS.
 
 ```bash title="/etc/hosts"
 2a01:7c8:7c8::1337 github.com
@@ -50,7 +49,7 @@ Best for VPS instances on TransIP / SandboxVPS.
 </TabItem>
 <TabItem value="danwin" label="DanWin1210 (Public)">
 
-Public proxy with full GHCR, Packages & Assets support — usable from anywhere.
+Public proxy with full GHCR, Packages & Assets support.
 
 ```bash title="/etc/hosts"
 # Core services
@@ -78,10 +77,7 @@ Public proxy with full GHCR, Packages & Assets support — usable from anywhere.
 
 ```bash
 sudo nano /etc/hosts
-# Paste the entries above at the end of file
-# CTRL+X → Y → Enter to save
-
-# Test
+# Paste entries at the end → CTRL+X → Y → Enter
 curl -I https://github.com 2>&1 | head -5
 git clone https://github.com/Adekabang/docs-8labs.git
 ```
@@ -89,36 +85,36 @@ git clone https://github.com/Adekabang/docs-8labs.git
 </TabItem>
 <TabItem value="windows" label="Windows Server">
 
-1. Start → type `Notepad` → right-click → **Run as Administrator**
-2. File → Open → paste `C:\Windows\System32\drivers\etc\hosts` → Enter
-3. Paste entries at the end → Save (CTRL+S)
+1. Start → `Notepad` → right-click → **Run as Administrator**
+2. File → Open → `C:\Windows\System32\drivers\etc\hosts`
+3. Paste entries → Save (CTRL+S)
 
 </TabItem>
 </Tabs>
 
 :::note
 
-- **SSH**: Proxy only works for HTTPS. Switch to HTTPS remotes or set up an SSH proxy jump for `git@github.com`.
-- **Rate limiting**: Public proxies hit GitHub's rate limit faster — use a PAT for authenticated requests.
+- **SSH**: Proxy only works for HTTPS. Use HTTPS remotes or set up an SSH proxy jump for `git@github.com`.
+- **Rate limiting**: Public proxies hit rate limits faster — use a PAT for authenticated requests.
 
 :::
 
-</TabItem>
-<TabItem value="docker" label="Docker Hub">
+---
 
-Docker Hub provides a dedicated **IPv6 beta endpoint**: `registry.ipv6.docker.com`
+## Solution 2: Docker Hub via IPv6 Endpoint
+
+Docker Hub provides a dedicated **IPv6 beta endpoint**: `registry.ipv6.docker.com`.
 
 ### Login & Pull
 
 ```bash
-# Login
 docker login registry.ipv6.docker.com
 
-# Pull official images (use "library/" prefix)
+# Official images (use "library/" prefix)
 docker pull registry.ipv6.docker.com/library/ubuntu:latest
 docker pull registry.ipv6.docker.com/library/nginx:latest
 
-# User images (no "library/")
+# User images
 docker pull registry.ipv6.docker.com/storjlabs/watchtower:latest
 ```
 
@@ -148,10 +144,11 @@ sudo systemctl restart docker
 
 Now `docker pull nginx:latest` works without any prefix.
 
-</TabItem>
-<TabItem value="nat64" label="NAT64 / DNS64">
+---
 
-A universal solution — DNS64 translates IPv4 addresses to IPv6 automatically, so your VPS can reach the entire IPv4 internet.
+## Solution 3: NAT64 + DNS64
+
+A universal solution — DNS64 automatically translates IPv4 addresses to IPv6, letting your VPS reach the entire IPv4 internet.
 
 ### Google DNS64
 
@@ -159,8 +156,6 @@ A universal solution — DNS64 translates IPv4 addresses to IPv6 automatically, 
 nameserver 2001:4860:4860::6464
 nameserver 2001:4860:4860::64
 ```
-
-Apply:
 
 ```bash
 sudo nano /etc/resolv.conf
@@ -172,9 +167,6 @@ sudo nano /etc/resolv.conf
 NAT64 only works for **outbound** connections. You cannot expose services to the IPv4 internet this way.
 
 :::
-
-</TabItem>
-</Tabs>
 
 ---
 
@@ -194,7 +186,7 @@ docker run --rm hello-world
 
 | Issue | Solution |
 |-------|----------|
-| `git push` fails via HTTPS | Use a Personal Access Token (PAT), not password. GitHub → Settings → Developer settings → Tokens |
+| `git push` fails via HTTPS | Use a Personal Access Token (PAT), not password |
 | SSH `git@github.com` still fails | Switch remote to HTTPS: `git remote set-url origin https://github.com/user/repo.git` |
 | Docker pull keeps timing out | Pull directly: `docker pull registry.ipv6.docker.com/library/<image>` |
 | `curl` succeeds but `git` fails | Check `.gitconfig` for conflicting proxy settings |
