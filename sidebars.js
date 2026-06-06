@@ -7,9 +7,6 @@
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   tutorialSidebar: [
-    // Introduction at the top
-    'cloudlabs-101/intro',
-    
     // All categories in order
     {
       type: 'category',
