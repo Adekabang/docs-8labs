@@ -11,11 +11,8 @@ VirtualLabs and some IPv6-only VPS instances can't directly reach services that 
 
 ## The Problem
 
-When you run:
-
 ```bash
 git clone https://github.com/user/repo.git
-# or
 docker pull nginx:latest
 ```
 
@@ -23,19 +20,22 @@ You might get errors like:
 
 ```
 fatal: unable to access 'https://github.com/...': Could not resolve host: github.com
+Error response from daemon: ... dial tcp: lookup registry-1.docker.io: no such host
 ```
 
-```
-Error response from daemon: Get https://registry-1.docker.io/v2/: dial tcp: lookup registry-1.docker.io: no such host
-```
+This happens because **GitHub**, **Docker Hub**, and many developer services still don't support direct IPv6 connections (as of June 2026).
 
-This happens because **GitHub**, **Docker Hub**, and many developer services still don't support direct IPv6 connections (as of June 2026). Your VPS only has IPv6 connectivity, so DNS resolution fails.
+---
 
-## Solution 1: GitHub via IPv6 Proxy (/etc/hosts)
+## Solutions
 
-You can route traffic to GitHub through an **IPv6 proxy** — a server that accepts IPv6 connections and forwards them to GitHub over IPv4. The method: add mappings to `/etc/hosts`.
+<Tabs>
+<TabItem value="github" label="GitHub Proxy" default>
 
-### Option A: TransIP GitHub IPv6 Proxy
+Route traffic to GitHub through an **IPv6 proxy** — a server that accepts IPv6 and forwards to GitHub over IPv4. Add mappings to `/etc/hosts`.
+
+<Tabs>
+<TabItem value="transip" label="TransIP" default>
 
 Best for VPS instances on TransIP / SandboxVPS.
 
@@ -47,113 +47,82 @@ Best for VPS instances on TransIP / SandboxVPS.
 2a01:7c8:7c8::1337 raw.githubusercontent.com
 ```
 
-### Option B: DanWin1210 Public IPv6 Proxy
+</TabItem>
+<TabItem value="danwin" label="DanWin1210 (Public)">
 
-A public proxy usable from anywhere. More comprehensive — includes GitHub Packages, GHCR, and GitHub Assets.
+Public proxy with full GHCR, Packages & Assets support — usable from anywhere.
 
 ```bash title="/etc/hosts"
-# GitHub core services
+# Core services
 2a01:4f8:c010:d56::2 github.com
 2a01:4f8:c010:d56::3 api.github.com
 2a01:4f8:c010:d56::4 codeload.github.com
 # GitHub Container Registry
 2a01:4f8:c010:d56::6 ghcr.io
-# GitHub Packages (npm, maven, nuget, rubygems)
+# GitHub Packages
 2a01:4f8:c010:d56::7 pkg.github.com npm.pkg.github.com maven.pkg.github.com nuget.pkg.github.com rubygems.pkg.github.com
-# GitHub Uploads
+# Uploads
 2a01:4f8:c010:d56::8 uploads.github.com
-# GitHub Assets & CDN (via GitHub's native IPv6)
-2606:50c0:8000::133 objects.githubusercontent.com www.objects.githubusercontent.com release-assets.githubusercontent.com gist.githubusercontent.com repository-images.githubusercontent.com camo.githubusercontent.com private-user-images.githubusercontent.com avatars0.githubusercontent.com avatars1.githubusercontent.com avatars2.githubusercontent.com avatars3.githubusercontent.com cloud.githubusercontent.com desktop.githubusercontent.com support.github.com
-2606:50c0:8000::154 support-assets.githubassets.com github.githubassets.com opengraph.githubassets.com github-registry-files.githubusercontent.com github-cloud.githubusercontent.com
+# Assets & CDN (GitHub's native IPv6)
+2606:50c0:8000::133 objects.githubusercontent.com release-assets.githubusercontent.com gist.githubusercontent.com repository-images.githubusercontent.com camo.githubusercontent.com avatars.githubusercontent.com cloud.githubusercontent.com support.github.com
+2606:50c0:8000::154 github.githubassets.com opengraph.githubassets.com github-registry-files.githubusercontent.com github-cloud.githubusercontent.com
 ```
 
-### Steps
+</TabItem>
+</Tabs>
+
+### Apply
 
 <Tabs>
 <TabItem value="linux" label="Linux" default>
 
-**1. Open `/etc/hosts`**
-
 ```bash
 sudo nano /etc/hosts
-```
+# Paste the entries above at the end of file
+# CTRL+X → Y → Enter to save
 
-**2. Add proxy entries at the end of the file**
-
-Pick one of the options above (TransIP or DanWin1210) and paste at the bottom.
-
-**3. Save and test**
-
-```bash
-# CTRL+X → Y → Enter (nano)
-
-# Test connection
+# Test
 curl -I https://github.com 2>&1 | head -5
-```
-
-**4. Test git clone**
-
-```bash
 git clone https://github.com/Adekabang/docs-8labs.git
 ```
 
 </TabItem>
 <TabItem value="windows" label="Windows Server">
 
-**1. Open Notepad as Administrator**
-
-Click Start → type `Notepad` → right-click → **Run as Administrator**
-
-**2. Open the hosts file**
-
-File → Open → paste `C:\Windows\System32\drivers\etc\hosts` in File name → Enter
-
-**3. Add proxy entries at the end of the file**
-
-**4. Save** (CTRL+S)
+1. Start → type `Notepad` → right-click → **Run as Administrator**
+2. File → Open → paste `C:\Windows\System32\drivers\etc\hosts` → Enter
+3. Paste entries at the end → Save (CTRL+S)
 
 </TabItem>
 </Tabs>
 
-### Important Notes
+:::note
 
-- **SSH**: The proxy only works for HTTPS. For `git@github.com:...` (SSH), you still need an additional solution. Recommendation: use HTTPS remotes or set up an SSH proxy jump.
-- **Rate limiting**: Public proxies may hit GitHub's rate limit faster. Use a PAT token for authenticated requests.
-- **Long-term alternative**: Encourage GitHub to support native IPv6. In the meantime, this proxy is a practical workaround.
+- **SSH**: Proxy only works for HTTPS. Switch to HTTPS remotes or set up an SSH proxy jump for `git@github.com`.
+- **Rate limiting**: Public proxies hit GitHub's rate limit faster — use a PAT for authenticated requests.
 
----
+:::
 
-## Solution 2: Docker Hub via IPv6 Endpoint
+</TabItem>
+<TabItem value="docker" label="Docker Hub">
 
-Docker Hub provides a dedicated **IPv6 beta endpoint**:
+Docker Hub provides a dedicated **IPv6 beta endpoint**: `registry.ipv6.docker.com`
 
-```
-registry.ipv6.docker.com
-```
-
-### Steps
-
-**1. Log in to Docker Hub via the IPv6 endpoint**
+### Login & Pull
 
 ```bash
+# Login
 docker login registry.ipv6.docker.com
-```
 
-Enter your Docker Hub username and password.
-
-**2. Pull images using the IPv6 prefix**
-
-```bash
-# Official images (use the "library/" prefix)
+# Pull official images (use "library/" prefix)
 docker pull registry.ipv6.docker.com/library/ubuntu:latest
 docker pull registry.ipv6.docker.com/library/nginx:latest
-docker pull registry.ipv6.docker.com/library/alpine:latest
 
-# Non-official images
+# User images (no "library/")
 docker pull registry.ipv6.docker.com/storjlabs/watchtower:latest
 ```
 
-**3. In Dockerfiles, use FROM with the prefix**
+### Dockerfile
 
 ```dockerfile title="Dockerfile"
 FROM registry.ipv6.docker.com/library/node:20-alpine
@@ -163,15 +132,9 @@ RUN npm install
 CMD ["node", "index.js"]
 ```
 
-:::tip
+### Mirror (optional)
 
-The **`library/` prefix** is only for official images. For user images, the format is: `registry.ipv6.docker.com/<username>/<image>:<tag>`
-
-:::
-
-### Alternative: Set Up a Docker Mirror for IPv6
-
-If you frequently build and pull many images, it's more efficient to set up a **Docker daemon mirror**:
+Set up a daemon mirror to avoid prefixing every pull:
 
 ```json title="/etc/docker/daemon.json"
 {
@@ -179,76 +142,70 @@ If you frequently build and pull many images, it's more efficient to set up a **
 }
 ```
 
-Then restart:
-
 ```bash
 sudo systemctl restart docker
 ```
 
-With the mirror configured, all `docker pull` commands automatically route through IPv6 without needing any extra prefix.
+Now `docker pull nginx:latest` works without any prefix.
 
----
+</TabItem>
+<TabItem value="nat64" label="NAT64 / DNS64">
 
-## Solution 3: NAT64 + DNS64 (Optional)
+A universal solution — DNS64 translates IPv4 addresses to IPv6 automatically, so your VPS can reach the entire IPv4 internet.
 
-For a more universal solution (not limited to GitHub/Docker Hub), you can use public **NAT64/DNS64** services that automatically translate IPv4 addresses to IPv6.
-
-### Using Google's DNS64
-
-```bash
-# Set DNS to Google NAT64
-sudo nano /etc/resolv.conf
-```
+### Google DNS64
 
 ``` title="/etc/resolv.conf"
 nameserver 2001:4860:4860::6464
 nameserver 2001:4860:4860::64
 ```
 
-With DNS64, every DNS query to an IPv4-only host is automatically wrapped with a NAT64 prefix, allowing your IPv6 VPS to reach the entire IPv4 internet.
+Apply:
+
+```bash
+sudo nano /etc/resolv.conf
+# Replace nameserver entries with lines above
+```
 
 :::warning
 
-NAT64 only works for **outbound** connections. It cannot be used to expose a service from your VPS to the IPv4 internet.
+NAT64 only works for **outbound** connections. You cannot expose services to the IPv4 internet this way.
 
 :::
 
----
-
-## Troubleshooting
-
-| Issue | Solution |
-|-------|----------|
-| `git push` fails via HTTPS | Make sure you're using a Personal Access Token (PAT), not a password. Create one at GitHub → Settings → Developer settings → Tokens |
-| SSH `git@github.com` still fails | Switch the remote to HTTPS: `git remote set-url origin https://github.com/user/repo.git` |
-| Docker pull keeps timing out | Try `docker pull registry.ipv6.docker.com/library/<image>` directly |
-| `curl` succeeds but `git` fails | Check `.gitconfig` — make sure no proxy settings conflict |
-| Proxy is slow / times out | Public proxies are shared resources. Try an alternate proxy or NAT64 |
+</TabItem>
+</Tabs>
 
 ---
 
 ## Verification
 
-After setup, confirm everything is working:
-
 ```bash
-# 1. Test GitHub
+# GitHub
 curl -I https://github.com 2>&1 | head -3
-
-# 2. Test git clone
 git ls-remote https://github.com/Adekabang/docs-8labs.git
 
-# 3. Test Docker Hub
+# Docker Hub
 docker pull registry.ipv6.docker.com/library/hello-world:latest
 docker run --rm hello-world
 ```
+
+## Troubleshooting
+
+| Issue | Solution |
+|-------|----------|
+| `git push` fails via HTTPS | Use a Personal Access Token (PAT), not password. GitHub → Settings → Developer settings → Tokens |
+| SSH `git@github.com` still fails | Switch remote to HTTPS: `git remote set-url origin https://github.com/user/repo.git` |
+| Docker pull keeps timing out | Pull directly: `docker pull registry.ipv6.docker.com/library/<image>` |
+| `curl` succeeds but `git` fails | Check `.gitconfig` for conflicting proxy settings |
+| Proxy slow / times out | Try an alternate proxy or NAT64 |
 
 ---
 
 ## References
 
-- [DanWin1210 GitHub IPv6 Proxy](https://danwin1210.de/github-ipv6-proxy.php) — Public proxy with full GHCR & Packages support
-- [TransIP: Docker Hub IPv6 Support](https://www.transip.eu/knowledgebase/5290-sandboxvps-docker-hub-ipv6-support/) — `registry.ipv6.docker.com`
-- [TransIP: Using GitHub IPv6 Proxy](https://www.transip.eu/knowledgebase/5277-using-transip-github-ipv6-proxy/) — TransIP's proxy for their VPS instances
-- [Running Docker on IPv6-only Host - Ubuntu 22.04](https://g3rv4.com/2023/07/running-docker-ipv6-only-network)
+- [DanWin1210 GitHub IPv6 Proxy](https://danwin1210.de/github-ipv6-proxy.php)
+- [TransIP: Docker Hub IPv6 Support](https://www.transip.eu/knowledgebase/5290-sandboxvps-docker-hub-ipv6-support/)
+- [TransIP: Using GitHub IPv6 Proxy](https://www.transip.eu/knowledgebase/5277-using-transip-github-ipv6-proxy/)
+- [Running Docker on IPv6-only Host](https://g3rv4.com/2023/07/running-docker-ipv6-only-network)
 - [Docker Docs: IPv6 Beta Support](https://docs.docker.com/engine/daemon/ipv6/)
