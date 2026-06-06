@@ -125,7 +125,7 @@ const config = {
             items: [
               {
                 label: 'Documentation',
-                to: '/docs/intro',
+                to: '/docs/cloudlabs-101/intro',
               },
               {
                 label: 'Client Panel',

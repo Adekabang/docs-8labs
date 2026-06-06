@@ -8,7 +8,7 @@
 const sidebars = {
   tutorialSidebar: [
     // Introduction at the top
-    'intro',
+    'cloudlabs-101/intro',
     
     // All categories in order
     {
