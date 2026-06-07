@@ -1,19 +1,20 @@
 ---
-title: Access GitHub & Docker Hub from IPv6-only VPS
+title: Access GitHub, Docker Hub & LLM APIs from IPv6-only VPS
 sidebar_position: 4
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Access GitHub & Docker Hub from IPv6-only VPS
+# Access GitHub, Docker Hub & LLM APIs from IPv6-only VPS
 
-VirtualLabs and some IPv6-only VPS instances can't directly reach services that are still IPv4-only, such as **GitHub** and **Docker Hub**. This tutorial provides practical solutions so you can still `git clone`, `git push`, `docker pull`, and `docker login` from a VPS that only has an IPv6 address.
+VirtualLabs and some IPv6-only VPS instances can't directly reach services that are still IPv4-only, such as **GitHub**, **Docker Hub**, and **OpenAI**. This tutorial provides practical solutions so you can still `git clone`, `git push`, `docker pull`, `docker login`, and call LLM APIs from a VPS that only has an IPv6 address.
 
 ## The Problem
 
 ```bash
 git clone https://github.com/user/repo.git
 docker pull nginx:latest
+curl https://api.openai.com/v1/chat/completions
 ```
 
 You might get errors like:
@@ -21,9 +22,10 @@ You might get errors like:
 ```
 fatal: unable to access 'https://github.com/...': Could not resolve host: github.com
 Error response from daemon: ... dial tcp: lookup registry-1.docker.io: no such host
+curl: (6) Could not resolve host: api.openai.com
 ```
 
-This happens because **GitHub**, **Docker Hub**, and many developer services still don't support direct IPv6 connections (as of June 2026).
+This happens because **GitHub**, **Docker Hub**, **OpenAI**, and many developer services still don't support direct IPv6 connections (as of June 2026).
 
 ---
 
@@ -170,6 +172,106 @@ NAT64 only works for **outbound** connections. You cannot expose services to the
 
 ---
 
+## Solution 4: LLM APIs — Native IPv6, OpenRouter Gateway & NAT64
+
+Most LLM API providers support IPv6 natively (via Cloudflare or their own infrastructure). The major exception is **OpenAI** (`api.openai.com`), which has no AAAA record and cannot be reached directly from an IPv6-only VPS.
+
+### IPv6 Support per Provider (June 2026)
+
+| Provider | Endpoint | IPv6 | Via | Workaround |
+|---|---|---|---|---|
+| **OpenAI** | `api.openai.com` | ❌ No | — | OpenRouter proxy or NAT64 |
+| **Anthropic** | `api.anthropic.com` | ✅ Yes | Native | None needed |
+| **Google Gemini** | `generativelanguage.googleapis.com` | ✅ Yes | Native | None needed |
+| **OpenRouter** | `openrouter.ai` | ✅ Yes | Cloudflare | None needed |
+| **Groq** | `api.groq.com` | ✅ Yes | Cloudflare | None needed |
+| **DeepSeek** | `api.deepseek.com` | ✅ Yes | CloudFront | None needed |
+| **Mistral** | `api.mistral.ai` | ✅ Yes | Native | None needed |
+| **Perplexity** | `api.perplexity.ai` | ✅ Yes | Cloudflare | None needed |
+| **Together AI** | `api.together.xyz` | ✅ Yes | Cloudflare | None needed |
+| **Fireworks** | `api.fireworks.ai` | ✅ Yes | Cloudflare | None needed |
+
+### Option A: OpenRouter as Gateway (Simplest for OpenAI)
+
+OpenRouter has native IPv6 and proxies all models — including every OpenAI model. No NAT64 or proxy needed.
+
+```bash
+# Replace api.openai.com with openrouter.ai
+curl https://openrouter.ai/api/v1/chat/completions \
+  -H "Authorization: Bearer *** \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "openai/gpt-4o",
+    "messages": [{"role": "user", "content": "Hello from IPv6-only VPS"}]
+  }'
+```
+
+```python
+# Python example using openai package — point to OpenRouter
+from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://openrouter.ai/api/v1",
+    api_key="sk-or-***",
+)
+response = client.chat.completions.create(
+    model="openai/gpt-4o",
+    messages=[{"role": "user", "content": "Hello"}],
+)
+print(response.choices[0].message.content)
+```
+
+OpenRouter [model list](https://openrouter.ai/models) shows all available models with their `id` prefix (`openai/`, `anthropic/`, `google/`, etc.).
+
+:::tip
+
+OpenRouter also supports Anthropic, Google, Meta, DeepSeek, and 200+ models — all from a single IPv6 endpoint. Great as a single gateway from IPv6-only infrastructure.
+
+:::
+
+### Option B: NAT64 + DNS64 (Universal)
+
+If you need direct access to OpenAI's API (e.g., for Assistants API, fine-tuning endpoints, or compliance), use NAT64. Configure DNS64 as shown in [Solution 3](#solution-3-nat64--dns64), then:
+
+```bash
+# Now works — DNS64 translates api.openai.com to IPv6
+curl https://api.openai.com/v1/chat/completions \
+  -H "Authorization: Bearer *** \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "gpt-4o",
+    "messages": [{"role": "user", "content": "Hello"}]
+  }'
+```
+
+### Option C: Call IPv6-Native Providers Directly
+
+For providers that already have IPv6, just use their native endpoints — no workaround needed:
+
+```bash
+# Anthropic — works directly
+curl https://api.anthropic.com/v1/messages \
+  -H "x-api-key: sk-ant-*** \
+  -H "anthropic-version: 2023-06-01" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "claude-sonnet-4-20250514",
+    "max_tokens": 256,
+    "messages": [{"role": "user", "content": "Hello"}]
+  }'
+
+# Groq — works directly
+curl https://api.groq.com/openai/v1/chat/completions \
+  -H "Authorization: Bearer *** \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "llama-3.3-70b-versatile",
+    "messages": [{"role": "user", "content": "Hello"}]
+  }'
+```
+
+---
+
 ## Verification
 
 ```bash
@@ -180,6 +282,11 @@ git ls-remote https://github.com/Adekabang/docs-8labs.git
 # Docker Hub
 docker pull registry.ipv6.docker.com/library/hello-world:latest
 docker run --rm hello-world
+
+# LLM APIs
+curl -s https://openrouter.ai/api/v1/models | head -c 200
+curl -s https://api.anthropic.com/ 2>&1 | grep -o "Anthropic"
+curl -6 -s -o /dev/null -w "%{http_code}" https://generativelanguage.googleapis.com/
 ```
 
 ## Troubleshooting
@@ -191,6 +298,10 @@ docker run --rm hello-world
 | Docker pull keeps timing out | Pull directly: `docker pull registry.ipv6.docker.com/library/<image>` |
 | `curl` succeeds but `git` fails | Check `.gitconfig` for conflicting proxy settings |
 | Proxy slow / times out | Try an alternate proxy or NAT64 |
+| `curl: (6) Could not resolve host: api.openai.com` | Use OpenRouter gateway or enable NAT64/DNS64 (Solution 3) |
+| OpenRouter returns `401 Unauthorized` | Verify API key — OpenRouter uses `sk-or-` prefix, not OpenAI keys |
+| Python `openai` package fails on IPv6-only | Set `base_url="https://openrouter.ai/api/v1"` or configure DNS64 |
+| `openai` Assistants API / fine-tuning not on OpenRouter | Use NAT64/DNS64 for direct `api.openai.com` access |
 
 ---
 
@@ -201,3 +312,6 @@ docker run --rm hello-world
 - [TransIP: Using GitHub IPv6 Proxy](https://www.transip.eu/knowledgebase/5277-using-transip-github-ipv6-proxy/)
 - [Running Docker on IPv6-only Host](https://g3rv4.com/2023/07/running-docker-ipv6-only-network)
 - [Docker Docs: IPv6 Beta Support](https://docs.docker.com/engine/daemon/ipv6/)
+- [OpenRouter API Docs](https://openrouter.ai/docs/api-reference/overview)
+- [OpenAI Community: IPv6 Support Thread](https://community.openai.com/) — search "IPv6" for latest status
+- [Google DNS64](https://developers.google.com/speed/public-dns/docs/dns64)
