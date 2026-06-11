@@ -62,7 +62,7 @@ git push origin pr-branch
 ```
 5. Create a pull request on GitHub from your public fork's pr-branch to the original public repo.
 
-Remember to repeat steps [3](/docs/git/private-fork#step-3-sync-with-the-public-repo) and [4](/docs/git/private-fork#step-4-create-a-pull-request-to-the-public-repo) as needed to keep your repos in sync and contribute changes back to the public repo.
+Remember to repeat steps [3](/guides/git/private-fork#step-3-sync-with-the-public-repo) and [4](/guides/git/private-fork#step-4-create-a-pull-request-to-the-public-repo) as needed to keep your repos in sync and contribute changes back to the public repo.
 
 ## Miscellaneous
 ### Download from Private Repository

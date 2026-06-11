@@ -90,6 +90,6 @@ This docs section keeps `cliproxyapi` as the main walkthrough because that is th
 
 ## Related pages
 
-- [Configure providers, agents, and models](/docs/opencode/configuration)
-- [Install OpenCode and CLIProxyAPI](/docs/opencode/installation)
-- [Launch OpenCode and use model variants](/docs/opencode/launch-and-model-reference)
+- [Configure providers, agents, and models](/guides/opencode/configuration)
+- [Install OpenCode and CLIProxyAPI](/guides/opencode/installation)
+- [Launch OpenCode and use model variants](/guides/opencode/launch-and-model-reference)

@@ -1,0 +1,11 @@
+# Old URL redirects after docs/guides split
+/docs/cloudlabs-101/* /docs/getting-started/:splat 301
+/docs/proxmox/* /guides/proxmox/:splat 301
+/docs/VMware/* /guides/vmware/:splat 301
+/docs/XCP-ng/* /guides/xcp-ng/:splat 301
+/docs/rocky-linux/* /guides/rocky-linux/:splat 301
+/docs/wireguard/* /guides/wireguard/:splat 301
+/docs/git/* /guides/git/:splat 301
+/docs/coolify/* /guides/coolify/:splat 301
+/docs/caddy-101/* /guides/caddy/:splat 301
+/docs/opencode/* /guides/opencode/:splat 301

@@ -13,22 +13,22 @@ The setup described here does **not** assume CLIProxyAPI is the only provider pa
 
 ## Documentation Map
 
-- [Quick Start for the full stack](/docs/opencode/quick-start)
-- [Install OpenCode and CLIProxyAPI](/docs/opencode/installation)
-- [Configure providers, agents, and models](/docs/opencode/configuration)
-- [Choose between opencode, opencode-go, and cliproxyapi](/docs/opencode/provider-strategy)
-- [Set up workflows, MCP tools, and project rules](/docs/opencode/workflow-and-tools)
-- [Configure MCP tools](/docs/opencode/mcp-guide)
-- [Automate project workflow with AGENTS.md](/docs/opencode/project-rules)
-- [Create custom local skills](/docs/opencode/skills-integration)
-- [Use planner strategy to save tokens](/docs/opencode/planner-strategy)
-- [Reference: OpenCode agent modes](/docs/opencode/agent-modes)
-- [Tutorial: Image to code workflow](/docs/opencode/image-to-code)
-- [Use RTK to reduce token usage](/docs/opencode/rtk-guide)
-- [Reference: Superpowers skills catalog](/docs/opencode/skills-catalog)
-- [Guide: When to use Impeccable](/docs/opencode/impeccable-guide)
-- [Launch OpenCode and use model variants](/docs/opencode/launch-and-model-reference)
-- [Troubleshoot common OpenCode issues](/docs/opencode/troubleshooting)
+- [Quick Start for the full stack](/guides/opencode/quick-start)
+- [Install OpenCode and CLIProxyAPI](/guides/opencode/installation)
+- [Configure providers, agents, and models](/guides/opencode/configuration)
+- [Choose between opencode, opencode-go, and cliproxyapi](/guides/opencode/provider-strategy)
+- [Set up workflows, MCP tools, and project rules](/guides/opencode/workflow-and-tools)
+- [Configure MCP tools](/guides/opencode/mcp-guide)
+- [Automate project workflow with AGENTS.md](/guides/opencode/project-rules)
+- [Create custom local skills](/guides/opencode/skills-integration)
+- [Use planner strategy to save tokens](/guides/opencode/planner-strategy)
+- [Reference: OpenCode agent modes](/guides/opencode/agent-modes)
+- [Tutorial: Image to code workflow](/guides/opencode/image-to-code)
+- [Use RTK to reduce token usage](/guides/opencode/rtk-guide)
+- [Reference: Superpowers skills catalog](/guides/opencode/skills-catalog)
+- [Guide: When to use Impeccable](/guides/opencode/impeccable-guide)
+- [Launch OpenCode and use model variants](/guides/opencode/launch-and-model-reference)
+- [Troubleshoot common OpenCode issues](/guides/opencode/troubleshooting)
 
 ## Architecture at a Glance
 
@@ -68,14 +68,14 @@ The upstream project is now called **oh-my-openagent**, but many current plugin 
 
 ## Recommended Reading Order
 
-1. Start with [Quick Start for the full stack](/docs/opencode/quick-start)
-2. Continue to [Install OpenCode and CLIProxyAPI](/docs/opencode/installation)
-3. Decide your provider path in [Choose between opencode, opencode-go, and cliproxyapi](/docs/opencode/provider-strategy)
-4. Configure providers, agents, and models in [Configuration](/docs/opencode/configuration)
-5. Add workflow and tool layers with [MCP Guide](/docs/opencode/mcp-guide), [Project Rules](/docs/opencode/project-rules), and [Skills Integration](/docs/opencode/skills-integration)
-6. Learn efficiency patterns in [Use planner strategy to save tokens](/docs/opencode/planner-strategy) and [Reference: OpenCode agent modes](/docs/opencode/agent-modes)
-7. Learn the runtime workflow in [Launch OpenCode and use model variants](/docs/opencode/launch-and-model-reference)
-8. Use [Troubleshooting](/docs/opencode/troubleshooting) when something breaks
+1. Start with [Quick Start for the full stack](/guides/opencode/quick-start)
+2. Continue to [Install OpenCode and CLIProxyAPI](/guides/opencode/installation)
+3. Decide your provider path in [Choose between opencode, opencode-go, and cliproxyapi](/guides/opencode/provider-strategy)
+4. Configure providers, agents, and models in [Configuration](/guides/opencode/configuration)
+5. Add workflow and tool layers with [MCP Guide](/guides/opencode/mcp-guide), [Project Rules](/guides/opencode/project-rules), and [Skills Integration](/guides/opencode/skills-integration)
+6. Learn efficiency patterns in [Use planner strategy to save tokens](/guides/opencode/planner-strategy) and [Reference: OpenCode agent modes](/guides/opencode/agent-modes)
+7. Learn the runtime workflow in [Launch OpenCode and use model variants](/guides/opencode/launch-and-model-reference)
+8. Use [Troubleshooting](/guides/opencode/troubleshooting) when something breaks
 
 ## Notes
 

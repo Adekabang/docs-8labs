@@ -71,7 +71,7 @@ By following these steps, you can seamlessly access virtual labs using SSH over 
 ### Cannot Access via SSH
 If you encounter an error like this:
 ![Permission Denied:publickey](./img/permission-denied-publickey.png)
-You can access the Virtual Labs using [Xterm.js](/docs/cloudlabs-101/accessing-virtual-labs#accessing-virtual-labs-using-xtermjs) first. Log in with your credentials and execute the following commands:
+You can access the Virtual Labs using [Xterm.js](/docs/getting-started/accessing-virtual-labs#accessing-virtual-labs-using-xtermjs) first. Log in with your credentials and execute the following commands:
 ```bash
 ### Enable SSH access
 sed -i -e "s/^#Port 22/Port 22/" -e "s/^#AddressFamily any/AddressFamily any/" -e "s/^#ListenAddress 0.0.0.0/ListenAddress 0.0.0.0/" -e "s/^#ListenAddress ::/ListenAddress ::/" /etc/ssh/sshd_config

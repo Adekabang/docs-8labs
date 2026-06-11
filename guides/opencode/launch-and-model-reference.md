@@ -47,6 +47,6 @@ opencode
 
 ## Related pages
 
-- [Configure providers, agents, and models](/docs/opencode/configuration)
-- [Set up workflows, MCP tools, and project rules](/docs/opencode/workflow-and-tools)
-- [Troubleshoot common OpenCode issues](/docs/opencode/troubleshooting)
+- [Configure providers, agents, and models](/guides/opencode/configuration)
+- [Set up workflows, MCP tools, and project rules](/guides/opencode/workflow-and-tools)
+- [Troubleshoot common OpenCode issues](/guides/opencode/troubleshooting)

@@ -74,7 +74,7 @@ If you regularly use exploration-heavy agent workflows, these tools are worth ha
 
 If your sessions are command-heavy, consider adding RTK:
 
-- [Use RTK to reduce token usage](/docs/opencode/rtk-guide)
+- [Use RTK to reduce token usage](/guides/opencode/rtk-guide)
 
 RTK can rewrite common Bash commands to compact `rtk ...` equivalents so less noisy output is sent into model context.
 
@@ -215,4 +215,4 @@ Some ideas are useful as patterns, but should not be copied blindly:
 
 ## Next step
 
-If something does not work after setup, jump to [Troubleshoot common OpenCode issues](/docs/opencode/troubleshooting).
+If something does not work after setup, jump to [Troubleshoot common OpenCode issues](/guides/opencode/troubleshooting).

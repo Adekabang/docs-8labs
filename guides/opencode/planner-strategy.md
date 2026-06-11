@@ -47,6 +47,6 @@ This keeps prompts cleaner and helps avoid spending large amounts of context on 
 
 ## Related pages
 
-- [Reference: OpenCode agent modes](/docs/opencode/agent-modes)
-- [Automate project workflow with AGENTS.md](/docs/opencode/project-rules)
-- [Reference: Superpowers skills catalog](/docs/opencode/skills-catalog)
+- [Reference: OpenCode agent modes](/guides/opencode/agent-modes)
+- [Automate project workflow with AGENTS.md](/guides/opencode/project-rules)
+- [Reference: Superpowers skills catalog](/guides/opencode/skills-catalog)

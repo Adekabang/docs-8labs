@@ -169,6 +169,6 @@ For lighter background search and fallback work, this repo also uses:
 
 ## Related pages
 
-- [Use planner strategy to save tokens](/docs/opencode/planner-strategy)
-- [Reference: Superpowers skills catalog](/docs/opencode/skills-catalog)
-- [Set up workflows, MCP tools, and project rules](/docs/opencode/workflow-and-tools)
+- [Use planner strategy to save tokens](/guides/opencode/planner-strategy)
+- [Reference: Superpowers skills catalog](/guides/opencode/skills-catalog)
+- [Set up workflows, MCP tools, and project rules](/guides/opencode/workflow-and-tools)

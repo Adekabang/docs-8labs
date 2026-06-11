@@ -3,7 +3,7 @@ import {Redirect} from '@docusaurus/router';
 
 
 export default function Home() {
-  return <Redirect to="/docs/cloudlabs-101/intro" />;
+  return <Redirect to="/docs/getting-started/intro" />;
 };
 
 

@@ -89,6 +89,6 @@ Use this page as a quick reference, then check the upstream Superpowers document
 
 ## Related pages
 
-- [Create custom local skills](/docs/opencode/skills-integration)
-- [Automate project workflow with AGENTS.md](/docs/opencode/project-rules)
-- [Set up workflows, MCP tools, and project rules](/docs/opencode/workflow-and-tools)
+- [Create custom local skills](/guides/opencode/skills-integration)
+- [Automate project workflow with AGENTS.md](/guides/opencode/project-rules)
+- [Set up workflows, MCP tools, and project rules](/guides/opencode/workflow-and-tools)

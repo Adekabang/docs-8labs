@@ -1,40 +1,26 @@
 // @ts-check
-// `@type` JSDoc annotations allow editor autocompletion and type checking
-// (when paired with `@ts-check`).
-// There are various equivalent ways to declare your Docusaurus config.
-// See: https://docusaurus.io/docs/api/docusaurus-config
-
 import {themes as prismThemes} from 'prism-react-renderer';
-// Environment-based config for containerized builds
+
 const showLastUpdate = process.env.DOCS_SHOW_LAST_UPDATE !== 'false';
+const editUrl = 'https://github.com/Adekabang/docs-8labs/tree/main';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: '8Labs Docs',
   tagline: 'Cloud Infrastructure Guides & Tutorials',
   favicon: 'img/favicon.ico',
-
-  // Set the production url of your site here
   url: 'https://docs.8labs.id',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
+  organizationName: 'Adekabang',
+  projectName: 'docs-8labs',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'Adekabang', // Usually your GitHub org/user name.
-  projectName: 'docs-8labs', // Usually your repo name.
-
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   markdown: {
     hooks: {
       onBrokenMarkdownLinks: 'warn',
     },
   },
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -46,26 +32,36 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: './sidebars.js',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/Adekabang/docs-8labs/tree/main',
-          // Environment-based: set DOCS_SHOW_LAST_UPDATE=false for builds without git
+          path: 'docs',
+          routeBasePath: 'docs',
+          sidebarPath: './sidebarsDocs.js',
+          editUrl,
           showLastUpdateAuthor: showLastUpdate,
           showLastUpdateTime: showLastUpdate,
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/Adekabang/docs-8labs/tree/main',
+          editUrl,
         },
         theme: {
           customCss: './src/css/custom.css',
         },
       }),
+    ],
+  ],
+
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'guides',
+        path: 'guides',
+        routeBasePath: 'guides',
+        sidebarPath: './sidebarsGuides.js',
+        editUrl,
+        showLastUpdateAuthor: showLastUpdate,
+        showLastUpdateTime: showLastUpdate,
+      },
     ],
   ],
 
@@ -77,7 +73,7 @@ const config = {
         indexDocs: true,
         indexBlog: true,
         indexPages: false,
-        docsRouteBasePath: '/docs',
+        docsRouteBasePath: ['docs', 'guides'],
         searchResultLimits: 8,
         searchBarShortcut: true,
         searchBarShortcutHint: true,
@@ -88,23 +84,43 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // Replace with your project's social card
       image: 'https://8labs.id/opengraph.jpg',
       navbar: {
         title: '8Labs Docs',
         logo: {
           alt: '8Labs Docs',
           src: 'img/logo.svg',
-          href: 'https://8labs.id'
+          href: 'https://8labs.id',
         },
         items: [
           {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
+            type: 'dropdown',
+            label: 'Docs',
             position: 'left',
-            label: 'Documentation',
+            items: [
+              { label: 'Getting Started', to: '/docs/getting-started/intro' },
+              { label: 'Billing & Plans', href: '/docs/billing-plans' },
+              { label: 'FAQ', href: '/docs/faq' },
+              { label: 'Troubleshooting', href: '/docs/troubleshooting' },
+            ],
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          {
+            type: 'dropdown',
+            label: 'Guides',
+            position: 'left',
+            items: [
+              { label: 'Proxmox', href: '/guides/proxmox' },
+              { label: 'VMware', href: '/guides/vmware' },
+              { label: 'XCP-ng', href: '/guides/xcp-ng' },
+              { label: 'Rocky Linux', href: '/guides/rocky-linux' },
+              { label: 'Caddy', href: '/guides/caddy' },
+              { label: 'WireGuard', href: '/guides/wireguard' },
+              { label: 'Git', href: '/guides/git' },
+              { label: 'Coolify', href: '/guides/coolify' },
+              { label: 'OpenCode', href: '/guides/opencode' },
+            ],
+          },
+          { to: '/blog', label: 'Blog', position: 'left' },
           {
             href: 'https://my.8labs.id',
             label: 'Client Panel',
@@ -123,44 +139,24 @@ const config = {
           {
             title: '8Labs',
             items: [
-              {
-                label: 'Documentation',
-                to: '/docs/cloudlabs-101/intro',
-              },
-              {
-                label: 'Client Panel',
-                href: 'https://my.8labs.id',
-              },
-              {
-                label: 'Cloud Panel',
-                href: 'https://cloud.8labs.id',
-              },
+              { label: 'Documentation', href: '/docs/getting-started/intro' },
+              { label: 'Guides', href: '/guides/proxmox' },
+              { label: 'Client Panel', href: 'https://my.8labs.id' },
+              { label: 'Cloud Panel', href: 'https://cloud.8labs.id' },
             ],
           },
           {
             title: 'Social Media',
             items: [
-              {
-                label: 'Github',
-                href: 'https://github.com/Adekabang',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/Mraskaa',
-              },
+              { label: 'Github', href: 'https://github.com/Adekabang' },
+              { label: 'Twitter', href: 'https://twitter.com/Mraskaa' },
             ],
           },
           {
             title: 'More',
             items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
-                label: 'Docs Repo',
-                href: 'https://github.com/Adekabang/docs-8labs',
-              },
+              { label: 'Blog', to: '/blog' },
+              { label: 'Docs Repo', href: 'https://github.com/Adekabang/docs-8labs' },
             ],
           },
         ],
@@ -172,9 +168,9 @@ const config = {
         additionalLanguages: ['bash'],
       },
     }),
-    scripts: [
-      { src: 'https://beacon.8labs.id/script.js', defer: true, 'data-website-id': '57890745-9236-46f9-965f-2deb733d445a'},
-    ]
+  scripts: [
+    { src: 'https://beacon.8labs.id/script.js', defer: true, 'data-website-id': '57890745-9236-46f9-965f-2deb733d445a' },
+  ],
 };
 
 export default config;

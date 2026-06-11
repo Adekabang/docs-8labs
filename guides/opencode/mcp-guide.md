@@ -106,6 +106,6 @@ Avoid copying blindly:
 
 ## Related pages
 
-- [Configure providers, agents, and models](/docs/opencode/configuration)
-- [Automate project workflow with AGENTS.md](/docs/opencode/project-rules)
-- [Troubleshoot common OpenCode issues](/docs/opencode/troubleshooting)
+- [Configure providers, agents, and models](/guides/opencode/configuration)
+- [Automate project workflow with AGENTS.md](/guides/opencode/project-rules)
+- [Troubleshoot common OpenCode issues](/guides/opencode/troubleshooting)

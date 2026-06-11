@@ -47,6 +47,6 @@ This reduces hallucinated structure and makes the output closer to a real design
 
 ## Related pages
 
-- [Use planner strategy to save tokens](/docs/opencode/planner-strategy)
-- [Create custom local skills](/docs/opencode/skills-integration)
-- [Set up workflows, MCP tools, and project rules](/docs/opencode/workflow-and-tools)
+- [Use planner strategy to save tokens](/guides/opencode/planner-strategy)
+- [Create custom local skills](/guides/opencode/skills-integration)
+- [Set up workflows, MCP tools, and project rules](/guides/opencode/workflow-and-tools)

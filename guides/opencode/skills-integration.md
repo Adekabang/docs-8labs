@@ -87,6 +87,6 @@ Start with a minimal skill, then grow it as repeated agent mistakes reveal what 
 
 ## Related pages
 
-- [Automate project workflow with AGENTS.md](/docs/opencode/project-rules)
-- [Reference: Superpowers skills catalog](/docs/opencode/skills-catalog)
-- [Set up workflows, MCP tools, and project rules](/docs/opencode/workflow-and-tools)
+- [Automate project workflow with AGENTS.md](/guides/opencode/project-rules)
+- [Reference: Superpowers skills catalog](/guides/opencode/skills-catalog)
+- [Set up workflows, MCP tools, and project rules](/guides/opencode/workflow-and-tools)

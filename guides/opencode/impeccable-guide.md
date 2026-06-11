@@ -48,6 +48,6 @@ Impeccable is most useful when the problem is not functionality, but **quality o
 
 ## Related pages
 
-- [Set up workflows, MCP tools, and project rules](/docs/opencode/workflow-and-tools)
-- [Tutorial: Image to code workflow](/docs/opencode/image-to-code)
-- [Reference: OpenCode agent modes](/docs/opencode/agent-modes)
+- [Set up workflows, MCP tools, and project rules](/guides/opencode/workflow-and-tools)
+- [Tutorial: Image to code workflow](/guides/opencode/image-to-code)
+- [Reference: OpenCode agent modes](/guides/opencode/agent-modes)

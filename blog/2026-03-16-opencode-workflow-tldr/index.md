@@ -10,7 +10,7 @@ tags: [docusaurus, opencode, workflow, docs, linux]
 
 I used to keep everything in one giant setup note, but in real life it was hard to use as a daily reference. Every time I needed one specific thing (provider setup, MCP, model choice, troubleshooting), I had to scroll through a giant wall of text.
 
-So I turned it into a structured workflow map in the [OpenCode Overview](/docs/opencode/overview): install, provider strategy, configuration, tools, operation mode, and troubleshooting.
+So I turned it into a structured workflow map in the [OpenCode Overview](/guides/opencode/overview): install, provider strategy, configuration, tools, operation mode, and troubleshooting.
 
 <!-- truncate -->
 
@@ -18,13 +18,13 @@ So I turned it into a structured workflow map in the [OpenCode Overview](/docs/o
 
 Instead of one massive guide, it is now split into practical pages:
 
-- [Quick Start](/docs/opencode/quick-start)
-- [Installation](/docs/opencode/installation)
-- [Provider Strategy](/docs/opencode/provider-strategy)
-- [Configuration](/docs/opencode/configuration)
-- [Workflow & Tools](/docs/opencode/workflow-and-tools)
-- [Agent Modes](/docs/opencode/agent-modes)
-- [Troubleshooting](/docs/opencode/troubleshooting)
+- [Quick Start](/guides/opencode/quick-start)
+- [Installation](/guides/opencode/installation)
+- [Provider Strategy](/guides/opencode/provider-strategy)
+- [Configuration](/guides/opencode/configuration)
+- [Workflow & Tools](/guides/opencode/workflow-and-tools)
+- [Agent Modes](/guides/opencode/agent-modes)
+- [Troubleshooting](/guides/opencode/troubleshooting)
 
 The main goal was simple: make this usable when actually working, not just “complete on paper.”
 

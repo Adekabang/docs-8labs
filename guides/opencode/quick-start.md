@@ -11,9 +11,9 @@ This page is the "Start Here" guide for the OpenCode stack in this repository. I
 
 Follow these pages first:
 
-- [Install OpenCode and CLIProxyAPI](/docs/opencode/installation)
-- [Choose between opencode, opencode-go, and cliproxyapi](/docs/opencode/provider-strategy)
-- [Configure providers, agents, and models](/docs/opencode/configuration)
+- [Install OpenCode and CLIProxyAPI](/guides/opencode/installation)
+- [Choose between opencode, opencode-go, and cliproxyapi](/guides/opencode/provider-strategy)
+- [Configure providers, agents, and models](/guides/opencode/configuration)
 
 At the end of that flow, you should have:
 
@@ -28,10 +28,10 @@ The base install becomes much more useful once you add the operating layer aroun
 
 Add these next:
 
-- [Configure MCP tools](/docs/opencode/mcp-guide)
-- [Automate project workflow with AGENTS.md](/docs/opencode/project-rules)
-- [Create custom local skills](/docs/opencode/skills-integration)
-- [Use RTK to reduce token usage](/docs/opencode/rtk-guide)
+- [Configure MCP tools](/guides/opencode/mcp-guide)
+- [Automate project workflow with AGENTS.md](/guides/opencode/project-rules)
+- [Create custom local skills](/guides/opencode/skills-integration)
+- [Use RTK to reduce token usage](/guides/opencode/rtk-guide)
 
 ## Step 3: Launch and work
 
@@ -61,6 +61,6 @@ This docs section separates the setup into install, tools, workflow, and referen
 
 ## Next pages
 
-- [Configure MCP tools](/docs/opencode/mcp-guide)
-- [Automate project workflow with AGENTS.md](/docs/opencode/project-rules)
-- [Reference: Superpowers skills catalog](/docs/opencode/skills-catalog)
+- [Configure MCP tools](/guides/opencode/mcp-guide)
+- [Automate project workflow with AGENTS.md](/guides/opencode/project-rules)
+- [Reference: Superpowers skills catalog](/guides/opencode/skills-catalog)

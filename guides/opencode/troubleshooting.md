@@ -112,6 +112,6 @@ brew services restart cliproxyapi
 
 ## Related pages
 
-- [Install OpenCode and CLIProxyAPI](/docs/opencode/installation)
-- [Configure providers, agents, and models](/docs/opencode/configuration)
-- [Launch OpenCode and use model variants](/docs/opencode/launch-and-model-reference)
+- [Install OpenCode and CLIProxyAPI](/guides/opencode/installation)
+- [Configure providers, agents, and models](/guides/opencode/configuration)
+- [Launch OpenCode and use model variants](/guides/opencode/launch-and-model-reference)
