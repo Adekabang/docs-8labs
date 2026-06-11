@@ -34,8 +34,8 @@ The main goal was simple: make this usable when actually working, not just "comp
 The guides section has been trimmed and expanded:
 
 - **Narrative content** (provider strategy philosophy, agent personalities, tool philosophy) has been distilled — the guides now focus on concrete HOWTO steps
-- **[ECC](/guides/ecc)** — Everything Claude Code: 64 agents, 262 skills, 84 commands. Production-ready agent harness across Claude Code, OpenCode, Codex, and more
-- **[Caveman](/guides/caveman)** — Token compression that cuts ~75% output tokens with zero accuracy loss. One-line install, works across 30+ agents
+- **[ECC](/guides/opencode/ecc)** — Everything Claude Code: 64 agents, 262 skills, 84 commands. Production-ready agent harness across Claude Code, OpenCode, Codex, and more
+- **[Caveman](/guides/opencode/caveman)** — Token compression that cuts ~75% output tokens with zero accuracy loss. One-line install, works across 30+ agents
 
 ## Workflow Mindset I'm Using Now
 

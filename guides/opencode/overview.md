@@ -59,15 +59,15 @@ The setup described here does **not** assume CLIProxyAPI is the only provider pa
 - **One local endpoint for many models** through CLIProxyAPI
 - **OpenCode as the main coding interface**
 - **oh-my-openagent for agent orchestration**
-- **ECC** for specialized agents (64 agents, 262 skills, 84 commands) — see [ECC guide](/guides/ecc)
-- **Caveman** for token compression (~75% fewer output tokens) — see [Caveman guide](/guides/caveman)
+- **ECC** for specialized agents (64 agents, 262 skills, 84 commands) — see [ECC guide](/guides/opencode/ecc)
+- **Caveman** for token compression (~75% fewer output tokens) — see [Caveman guide](/guides/opencode/caveman)
 
 ### Complementary Tools
 
 For advanced workflows, consider adding:
 
-- **[ECC](/guides/ecc)** — Agent harness with planners, reviewers, security scanners, and continuous learning. Works across Claude Code, OpenCode, Codex, and more.
-- **[Caveman](/guides/caveman)** — Token compression that cuts ~75% output tokens with no accuracy loss. One-line install, works across 30+ agents.
+- **[ECC](/guides/opencode/ecc)** — Agent harness with planners, reviewers, security scanners, and continuous learning. Works across Claude Code, OpenCode, Codex, and more.
+- **[Caveman](/guides/opencode/caveman)** — Token compression that cuts ~75% output tokens with no accuracy loss. One-line install, works across 30+ agents.
 
 ## Naming note
 

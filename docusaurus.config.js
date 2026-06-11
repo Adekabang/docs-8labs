@@ -118,8 +118,6 @@ const config = {
               { label: 'Git', href: '/guides/git' },
               { label: 'Coolify', href: '/guides/coolify' },
               { label: 'OpenCode', href: '/guides/opencode' },
-              { label: 'ECC', href: '/guides/ecc' },
-              { label: 'Caveman', href: '/guides/caveman' },
             ],
           },
           { to: '/blog', label: 'Blog', position: 'left' },
