@@ -1,8 +1,4 @@
 {
   "label": "Git",
-  "position": 8,
-  "link": {
-    "type": "generated-index",
-    "description": "Git workflows and best practices"
-  }
+  "position": 8
 }

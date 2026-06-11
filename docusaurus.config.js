@@ -99,9 +99,9 @@ const config = {
             position: 'left',
             items: [
               { label: 'Getting Started', to: '/docs/getting-started/intro' },
-              { label: 'Billing & Plans', href: '/docs/billing-plans' },
-              { label: 'FAQ', href: '/docs/faq' },
-              { label: 'Troubleshooting', href: '/docs/troubleshooting' },
+              { label: 'Billing & Plans', href: '/docs/billing-plans/overview' },
+              { label: 'FAQ', href: '/docs/faq/overview' },
+              { label: 'Troubleshooting', href: '/docs/troubleshooting/overview' },
             ],
           },
           {

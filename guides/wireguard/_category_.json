@@ -1,8 +1,4 @@
 {
   "label": "WireGuard",
-  "position": 7,
-  "link": {
-    "type": "generated-index",
-    "description": "WireGuard VPN setup and configuration"
-  }
+  "position": 7
 }

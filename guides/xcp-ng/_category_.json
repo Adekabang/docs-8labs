@@ -1,8 +1,4 @@
 {
   "label": "XCP-ng",
-  "position": 5,
-  "link": {
-    "type": "generated-index",
-    "description": "XCP-ng deployment, hardening, and VMware coexistence"
-  }
+  "position": 5
 }

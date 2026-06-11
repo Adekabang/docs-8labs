@@ -1,8 +1,4 @@
 {
   "label": "Coolify",
-  "position": 9,
-  "link": {
-    "type": "generated-index",
-    "description": "Coolify deployment platform guides and tutorials"
-  }
+  "position": 9
 }
