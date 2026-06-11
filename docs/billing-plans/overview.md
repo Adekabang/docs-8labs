@@ -4,20 +4,29 @@ sidebar_position: 0
 
 # Billing & Plans
 
-8Labs offers flexible pricing designed to fit your needs — from free experimentation to professional workloads.
+8Labs uses a **LAB Coin** system for all services. Purchase coins, then spend them on the lab plans you need — no subscription, no commitment.
 
-## Plans
+## Virtual Labs
 
-| Plan | Price | Resources | Best For |
-|------|-------|-----------|----------|
-| **Free** | IDR 0 | 1 vCPU, 1 GB RAM, 10 GB SSD | Learning, testing |
-| **Starter** | Coming soon | 2 vCPU, 2 GB RAM, 20 GB SSD | Personal projects |
-| **Pro** | Coming soon | 4 vCPU, 4 GB RAM, 40 GB SSD | Development, hosting |
+| Plan | vCPU | RAM | Storage | Bandwidth | Network | Price |
+|------|------|-----|---------|-----------|---------|-------|
+| **Small** | 1 | 1 GB | 15 GB | 512 GB | IPv6 | 1 coin / 3 days |
+| **Medium** | 2 | 4 GB | 33 GB | 512 GB | IPv4 + IPv6 | 1 coin / 1 day |
+| **Large** | 4 | 8 GB | 33 GB | 512 GB | IPv6 | 2 coins / 1 day |
+
+## Other Product Families
+
+8Labs also offers:
+
+- **Virtual Dedicated Labs** — KVM virtual machines for predictable workloads
+- **CloudLabs** — Higher-bandwidth cloud labs with public IPv4/IPv6 (Amsterdam, NL)
+- **ElasticLabs** — Flexible VM tiers with snapshot-based recovery
+- **ElasticLabs NAT** — Lower-cost NAT-based labs with private IPv4
+
+:::tip Check live availability
+Pricing, stock, and plan details are confirmed in the [Client Panel](https://my.8labs.id). Visit the shop to see current availability and place orders.
+:::
 
 ## Payment Methods
 
-We accept payments via Indonesian bank transfer and popular e-wallets. Full payment details are available during checkout.
-
-:::info Early Access
-We're currently in early access. Some plans and features are being rolled out gradually. Stay tuned!
-:::
+LAB Coins can be purchased via Indonesian bank transfer and popular e-wallets. Full payment details are available during checkout in the Client Panel.
