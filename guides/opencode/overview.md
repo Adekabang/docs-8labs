@@ -16,13 +16,13 @@ The setup described here does **not** assume CLIProxyAPI is the only provider pa
 - [Quick Start for the full stack](/guides/opencode/quick-start)
 - [Install OpenCode and CLIProxyAPI](/guides/opencode/installation)
 - [Configure providers, agents, and models](/guides/opencode/configuration)
-- [Choose between opencode, opencode-go, and cliproxyapi](/guides/opencode/provider-strategy)
-- [Set up workflows, MCP tools, and project rules](/guides/opencode/workflow-and-tools)
+- [Choose between opencode, opencode-go, and cliproxyapi](/blog/provider-strategy)
+- [Set up workflows, MCP tools, and project rules](/blog/workflow-and-tools)
 - [Configure MCP tools](/guides/opencode/mcp-guide)
 - [Automate project workflow with AGENTS.md](/guides/opencode/project-rules)
 - [Create custom local skills](/guides/opencode/skills-integration)
 - [Use planner strategy to save tokens](/guides/opencode/planner-strategy)
-- [Reference: OpenCode agent modes](/guides/opencode/agent-modes)
+- [Reference: OpenCode agent modes](/blog/agent-modes)
 - [Tutorial: Image to code workflow](/guides/opencode/image-to-code)
 - [Use RTK to reduce token usage](/guides/opencode/rtk-guide)
 - [Reference: Superpowers skills catalog](/guides/opencode/skills-catalog)
@@ -59,6 +59,15 @@ The setup described here does **not** assume CLIProxyAPI is the only provider pa
 - **One local endpoint for many models** through CLIProxyAPI
 - **OpenCode as the main coding interface**
 - **oh-my-openagent for agent orchestration**
+- **ECC** for specialized agents (64 agents, 262 skills, 84 commands) — see [ECC guide](/guides/ecc)
+- **Caveman** for token compression (~75% fewer output tokens) — see [Caveman guide](/guides/caveman)
+
+### Complementary Tools
+
+For advanced workflows, consider adding:
+
+- **[ECC](/guides/ecc)** — Agent harness with planners, reviewers, security scanners, and continuous learning. Works across Claude Code, OpenCode, Codex, and more.
+- **[Caveman](/guides/caveman)** — Token compression that cuts ~75% output tokens with no accuracy loss. One-line install, works across 30+ agents.
 
 ## Naming note
 
@@ -70,10 +79,10 @@ The upstream project is now called **oh-my-openagent**, but many current plugin 
 
 1. Start with [Quick Start for the full stack](/guides/opencode/quick-start)
 2. Continue to [Install OpenCode and CLIProxyAPI](/guides/opencode/installation)
-3. Decide your provider path in [Choose between opencode, opencode-go, and cliproxyapi](/guides/opencode/provider-strategy)
+3. Decide your provider path in [Choose between opencode, opencode-go, and cliproxyapi](/blog/provider-strategy)
 4. Configure providers, agents, and models in [Configuration](/guides/opencode/configuration)
 5. Add workflow and tool layers with [MCP Guide](/guides/opencode/mcp-guide), [Project Rules](/guides/opencode/project-rules), and [Skills Integration](/guides/opencode/skills-integration)
-6. Learn efficiency patterns in [Use planner strategy to save tokens](/guides/opencode/planner-strategy) and [Reference: OpenCode agent modes](/guides/opencode/agent-modes)
+6. Learn efficiency patterns in [Use planner strategy to save tokens](/guides/opencode/planner-strategy) and [Reference: OpenCode agent modes](/blog/agent-modes)
 7. Learn the runtime workflow in [Launch OpenCode and use model variants](/guides/opencode/launch-and-model-reference)
 8. Use [Troubleshooting](/guides/opencode/troubleshooting) when something breaks
 

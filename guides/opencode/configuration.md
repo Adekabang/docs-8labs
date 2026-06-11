@@ -7,7 +7,7 @@ sidebar_position: 3
 
 This page collects the configuration reference for this OpenCode setup so you can update providers, agents, and models without re-reading the entire docs section.
 
-If you are still deciding whether to use a direct provider or a proxy layer, read [Choose between opencode, opencode-go, and cliproxyapi](/guides/opencode/provider-strategy) first.
+If you are still deciding whether to use a direct provider or a proxy layer, read [Choose between opencode, opencode-go, and cliproxyapi](/blog/provider-strategy) first.
 
 ## 1. Configure `oh-my-openagent`
 
@@ -457,4 +457,4 @@ The model matrix now lives in this docs section under [Launch OpenCode and use m
 
 ## Next step
 
-Continue to [Set up workflows, MCP tools, and project rules](/guides/opencode/workflow-and-tools).
+Continue to [Set up workflows, MCP tools, and project rules](/blog/workflow-and-tools).

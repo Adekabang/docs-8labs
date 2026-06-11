@@ -12,7 +12,7 @@ This page is the "Start Here" guide for the OpenCode stack in this repository. I
 Follow these pages first:
 
 - [Install OpenCode and CLIProxyAPI](/guides/opencode/installation)
-- [Choose between opencode, opencode-go, and cliproxyapi](/guides/opencode/provider-strategy)
+- [Choose between opencode, opencode-go, and cliproxyapi](/blog/provider-strategy)
 - [Configure providers, agents, and models](/guides/opencode/configuration)
 
 At the end of that flow, you should have:
