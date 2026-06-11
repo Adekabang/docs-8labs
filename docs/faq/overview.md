@@ -58,7 +58,7 @@ Labs are typically ready within 1–15 minutes after ordering. You'll receive co
 
 ### What is the SLA?
 
-8Labs maintains a 99.5% uptime SLA for lab infrastructure. Check the [Status Page](https://status.8labs.id) for current availability.
+8Labs maintains a 99% uptime SLA for lab infrastructure as stated in our [Terms of Service](https://8labs.id/terms). Check the [Status Page](https://status.8labs.id) for current availability.
 
 :::tip Still have questions?
 If you can't find what you're looking for, check [Troubleshooting](/docs/troubleshooting/overview) or reach out via the Client Panel support path.
