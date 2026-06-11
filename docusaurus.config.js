@@ -10,8 +10,8 @@ const showLastUpdate = process.env.DOCS_SHOW_LAST_UPDATE !== 'false';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Cloud Environment',
-  tagline: 'Stay Hungry, Stay Foolish',
+  title: '8Labs Docs',
+  tagline: 'Cloud Infrastructure Guides & Tutorials',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -50,7 +50,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/Adekabang/selfdocu/tree/main',
+            'https://github.com/Adekabang/docs-8labs/tree/main',
           // Environment-based: set DOCS_SHOW_LAST_UPDATE=false for builds without git
           showLastUpdateAuthor: showLastUpdate,
           showLastUpdateTime: showLastUpdate,
@@ -60,7 +60,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/Adekabang/selfdocu/tree/main',
+            'https://github.com/Adekabang/docs-8labs/tree/main',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -91,9 +91,9 @@ const config = {
       // Replace with your project's social card
       image: 'https://8labs.id/opengraph.jpg',
       navbar: {
-        title: 'Cloud Environment',
+        title: '8Labs Docs',
         logo: {
-          alt: '8Labs Cloud Environment',
+          alt: '8Labs Docs',
           src: 'img/logo.svg',
           href: 'https://8labs.id'
         },
@@ -158,8 +158,8 @@ const config = {
                 to: '/blog',
               },
               {
-                label: 'GitHub',
-                href: 'https://github.com/Adekabang/selfdocu',
+                label: 'Docs Repo',
+                href: 'https://github.com/Adekabang/docs-8labs',
               },
             ],
           },

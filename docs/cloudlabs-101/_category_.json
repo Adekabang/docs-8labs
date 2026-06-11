@@ -1,8 +1,8 @@
 {
-  "label": "Cloud 8Labs 101",
+  "label": "8Labs 101",
   "position": 1,
   "link": {
     "type": "generated-index",
-    "description": "Getting started with Cloud 8Labs services"
+    "description": "Getting started with 8Labs services"
   }
 }
