@@ -1,11 +1,5 @@
-# Old URL redirects after docs/guides split
-/docs/cloudlabs-101/* /docs/getting-started/:splat 301
-/docs/proxmox/* /guides/proxmox/:splat 301
-/docs/VMware/* /guides/vmware/:splat 301
-/docs/XCP-ng/* /guides/xcp-ng/:splat 301
-/docs/rocky-linux/* /guides/rocky-linux/:splat 301
-/docs/wireguard/* /guides/wireguard/:splat 301
-/docs/git/* /guides/git/:splat 301
-/docs/coolify/* /guides/coolify/:splat 301
-/docs/caddy-101/* /guides/caddy/:splat 301
-/docs/opencode/* /guides/opencode/:splat 301
+# Cutover: docs are now served from https://8labs.id
+# Paths are preserved 1:1 (/docs/*, /guides/*, /blog/*).
+# Legacy pre-split URLs and old category/tag/utility URLs are
+# handled by 8labs.id's own _redirects after forwarding.
+/* https://8labs.id/:splat 301
